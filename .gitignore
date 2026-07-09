@@ -1,0 +1,11 @@
+# backups locaux — ne pas publier
+index.html.bak*
+*.bak
+
+# photos AVANT floutage (RGPD) — ne JAMAIS publier
+images/_originals/
+
+# divers
+.DS_Store
+Thumbs.db
+*.zip
