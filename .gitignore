@@ -9,3 +9,7 @@ images/_originals/
 .DS_Store
 Thumbs.db
 *.zip
+
+# outils locaux (aperçu) — ne pas publier
+.claude/
+_cap*.html
