@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Statistiques — SARL Paysages König</title>
+<style>
+  :root{--paper:#f6f4ef;--paper2:#eae6dd;--ink:#1d2127;--muted:#6f6a60;--stone:#988b78;--gold:#b3894e;--line:#ddd6ca;--card:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;padding:28px 18px 60px}
+  .wrap{max-width:760px;margin:0 auto}
+  .eyebrow{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:800}
+  h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin:6px 0 2px;letter-spacing:-.5px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:26px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:26px}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 10px 30px rgba(29,33,39,.06)}
+  .card .lab{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .card .val{font-size:clamp(2.4rem,9vw,3.4rem);font-weight:800;letter-spacing:-1px;color:var(--ink);line-height:1.1;margin-top:6px}
+  .card .val small{font-size:1rem;font-weight:600;color:var(--muted);letter-spacing:0}
+  .card.accent{background:var(--ink);border-color:var(--ink)}
+  .card.accent .lab{color:#c9b892}
+  .card.accent .val{color:#fff}
+  .hist{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 10px 30px rgba(29,33,39,.06)}
+  .hist h2{font-size:15px;letter-spacing:.5px;margin-bottom:16px;font-weight:800}
+  .bar{display:flex;align-items:center;gap:12px;margin:9px 0}
+  .bar .m{width:74px;font-size:13px;color:var(--muted);flex:none;text-transform:capitalize}
+  .bar .track{flex:1;background:var(--paper2);border-radius:99px;height:14px;overflow:hidden}
+  .bar .fill{height:100%;background:linear-gradient(90deg,var(--stone),var(--gold));border-radius:99px;width:0;transition:width .6s ease}
+  .bar .n{width:46px;text-align:right;font-weight:700;font-size:14px;flex:none}
+  .foot{margin-top:24px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  .foot b{color:var(--ink)}
+  .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+  button{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 18px;border-radius:99px;cursor:pointer}
+  button:hover{border-color:var(--gold);color:var(--gold)}
+  .live{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%;background:#2d9d5f;box-shadow:0 0 0 0 rgba(45,157,95,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(45,157,95,.5)}70%{box-shadow:0 0 0 8px rgba(45,157,95,0)}100%{box-shadow:0 0 0 0 rgba(45,157,95,0)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Tableau de bord privé</div>
+  <h1>Statistiques du site</h1>
+  <div class="sub">SARL Paysages König · fréquentation du site vitrine · <span class="live"><span class="dot"></span>en direct</span></div>
+
+  <div class="grid">
+    <div class="card accent">
+      <div class="lab">Visites — total</div>
+      <div class="val" id="total">…</div>
+    </div>
+    <div class="card">
+      <div class="lab">Ce mois-ci</div>
+      <div class="val" id="mois">…</div>
+    </div>
+  </div>
+
+  <div class="hist">
+    <h2>6 derniers mois</h2>
+    <div id="hist"></div>
+  </div>
+
+  <div class="row">
+    <button onclick="charger()">↻ Actualiser</button>
+    <span class="live" id="maj"></span>
+  </div>
+
+  <div class="foot">
+    <b>Comptage :</b> 1 visite par navigateur et par jour · <b>sans cookie</b>, sans compte, aucune donnée personnelle (juste un nombre) — conforme RGPD.<br>
+    Cette page est <b>privée</b> (non référencée sur Google, non liée depuis le site) : garde le lien pour toi.
+  </div>
+</div>
+
+<script>
+var NS="pk-fcfb84d7", API="https://api.counterapi.dev/v1/"+NS+"/";
+var MOIS_FR=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+
+function lire(key){
+  // lecture SEULE (pas de /up) → n'incrémente pas
+  return fetch(API+key+"/").then(function(r){return r.json();})
+    .then(function(j){return (j && typeof j.count==="number")?j.count:0;})
+    .catch(function(){return 0;});
+}
+function moisKey(d){return "m"+d.getFullYear()+String(d.getMonth()+1).padStart(2,"0");}
+
+function charger(){
+  document.getElementById("total").textContent="…";
+  document.getElementById("mois").textContent="…";
+  var now=new Date();
+  // total + mois courant
+  lire("visits").then(function(n){document.getElementById("total").textContent=n.toLocaleString("fr-FR");});
+  lire(moisKey(now)).then(function(n){document.getElementById("mois").textContent=n.toLocaleString("fr-FR");});
+  // 6 derniers mois
+  var mois=[];
+  for(var i=5;i>=0;i--){var d=new Date(now.getFullYear(),now.getMonth()-i,1);mois.push(d);}
+  Promise.all(mois.map(function(d){return lire(moisKey(d));})).then(function(vals){
+    var max=Math.max(1,Math.max.apply(null,vals));
+    var html="";
+    mois.forEach(function(d,i){
+      var lab=MOIS_FR[d.getMonth()]+" "+String(d.getFullYear()).slice(2);
+      var pct=Math.round(vals[i]/max*100);
+      html+='<div class="bar"><div class="m">'+lab+'</div><div class="track"><div class="fill" style="width:'+pct+'%"></div></div><div class="n">'+vals[i]+'</div></div>';
+    });
+    document.getElementById("hist").innerHTML=html;
+  });
+  var h=new Date();
+  document.getElementById("maj").textContent="Mis à jour à "+String(h.getHours()).padStart(2,"0")+":"+String(h.getMinutes()).padStart(2,"0");
+}
+charger();
+</script>
+</body>
+</html>

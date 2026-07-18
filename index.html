@@ -855,5 +855,20 @@ footer a:hover{color:#fff}
   document.getElementById("year").textContent=new Date().getFullYear();
 })();
 </script>
+<!-- Compteur de visites — counterapi.dev · sans cookie · sans compte · 1 visite/jour/navigateur -->
+<script>
+(function(){
+  var NS="pk-fcfb84d7", API="https://api.counterapi.dev/v1/"+NS+"/";
+  try{
+    var d=new Date(), day=d.toISOString().slice(0,10);
+    var mois="m"+day.slice(0,4)+day.slice(5,7);
+    if(localStorage.getItem("pk_visit")!==day){
+      localStorage.setItem("pk_visit",day);
+      fetch(API+"visits/up").catch(function(){});
+      fetch(API+mois+"/up").catch(function(){});
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
