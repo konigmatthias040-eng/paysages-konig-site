@@ -5,70 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Statistiques — SARL Paysages König</title>
+<meta name="theme-color" content="#1e2228">
+<link rel="icon" href="images/logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--paper:#f6f4ef;--paper2:#eae6dd;--ink:#1d2127;--muted:#6f6a60;--stone:#988b78;--gold:#b3894e;--line:#ddd6ca;--card:#fff}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;padding:28px 18px 60px}
-  .wrap{max-width:760px;margin:0 auto}
-  .eyebrow{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:800}
-  h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin:6px 0 2px;letter-spacing:-.5px}
-  .sub{color:var(--muted);font-size:14px;margin-bottom:26px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:26px}
-  @media(max-width:560px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 10px 30px rgba(29,33,39,.06)}
-  .card .lab{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700}
-  .card .val{font-size:clamp(2.4rem,9vw,3.4rem);font-weight:800;letter-spacing:-1px;color:var(--ink);line-height:1.1;margin-top:6px}
-  .card .val small{font-size:1rem;font-weight:600;color:var(--muted);letter-spacing:0}
-  .card.accent{background:var(--ink);border-color:var(--ink)}
-  .card.accent .lab{color:#c9b892}
-  .card.accent .val{color:#fff}
-  .hist{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 10px 30px rgba(29,33,39,.06)}
-  .hist h2{font-size:15px;letter-spacing:.5px;margin-bottom:16px;font-weight:800}
-  .bar{display:flex;align-items:center;gap:12px;margin:9px 0}
-  .bar .m{width:74px;font-size:13px;color:var(--muted);flex:none;text-transform:capitalize}
-  .bar .track{flex:1;background:var(--paper2);border-radius:99px;height:14px;overflow:hidden}
-  .bar .fill{height:100%;background:linear-gradient(90deg,var(--stone),var(--gold));border-radius:99px;width:0;transition:width .6s ease}
-  .bar .n{width:46px;text-align:right;font-weight:700;font-size:14px;flex:none}
-  .foot{margin-top:24px;color:var(--muted);font-size:12.5px;line-height:1.7}
-  .foot b{color:var(--ink)}
-  .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
-  button{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 18px;border-radius:99px;cursor:pointer}
-  button:hover{border-color:var(--gold);color:var(--gold)}
-  .live{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
-  .dot{width:8px;height:8px;border-radius:50%;background:#2d9d5f;box-shadow:0 0 0 0 rgba(45,157,95,.5);animation:pulse 2s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(45,157,95,.5)}70%{box-shadow:0 0 0 8px rgba(45,157,95,0)}100%{box-shadow:0 0 0 0 rgba(45,157,95,0)}}
+:root{
+  --paper:#f5f8fb; --paper-2:#e8eef4; --sand:#d9e4ee; --grey:#bfc9d3;
+  --stone:#3585bd; --stone-2:#7ebbe3; --blue:#3585bd; --blue-lt:#c6e3f4;
+  --ink:#1d2127; --ink-2:#262b33; --muted:#74726a;
+  --line:rgba(29,33,39,.14); --line-soft:rgba(29,33,39,.07);
+  --shadow:0 40px 80px -40px rgba(29,33,39,.5); --shadow-sm:0 18px 40px -26px rgba(29,33,39,.45);
+  --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:17px;line-height:1.6;padding:30px 20px 70px}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.06;letter-spacing:-.01em}
+.wrap{max-width:840px;margin:0 auto}
+
+/* en-tête marque (comme le site) */
+.brand{display:flex;align-items:center;gap:13px;color:var(--ink);margin-bottom:34px}
+.brand .mk{height:44px;display:grid;place-items:center;flex:0 0 auto;color:var(--blue)}
+.brand .emb{width:22px;height:44px;background:currentColor;-webkit-mask:url("images/logo.png") center/contain no-repeat;mask:url("images/logo.png") center/contain no-repeat}
+.brand b{font-family:var(--serif);font-weight:500;font-size:1.18rem;line-height:1}
+.brand span{display:block;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin-top:5px;font-weight:600}
+
+.eyebrow{font-weight:600;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--stone);display:inline-flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--stone)}
+h1{font-size:clamp(2.1rem,5vw,3.1rem);margin:12px 0 6px}
+h1 em{font-style:italic;color:var(--stone)}
+.sub{color:var(--muted);font-size:1.02rem;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line-soft);border-radius:28px;padding:28px 30px;box-shadow:var(--shadow-sm)}
+.card.m2{transform:translateY(16px)} /* léger décalage flottant / quinconce */
+@media(max-width:560px){.card.m2{transform:none}}
+.card .lab{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.card .val{font-family:var(--serif);font-weight:500;font-size:clamp(3rem,11vw,4.4rem);letter-spacing:-.02em;line-height:1;margin-top:12px;color:var(--ink)}
+.card.dark{background:var(--ink);border-color:var(--ink)}
+.card.dark .lab{color:var(--stone-2)}
+.card.dark .val{color:#fff}
+.card.dark .val em{font-style:normal;color:var(--stone-2)}
+
+.hist{background:#fff;border:1px solid var(--line-soft);border-radius:28px;padding:26px 30px;box-shadow:var(--shadow-sm);margin-top:22px}
+.hist h2{font-size:1.15rem;margin-bottom:20px}
+.hist h2 em{font-style:italic;color:var(--stone)}
+.bar{display:flex;align-items:center;gap:14px;margin:11px 0}
+.bar .m{width:80px;font-size:13px;color:var(--muted);flex:none;text-transform:capitalize;font-weight:500}
+.bar .track{flex:1;background:var(--paper-2);border-radius:999px;height:15px;overflow:hidden}
+.bar .fill{height:100%;background:linear-gradient(90deg,var(--stone-2),var(--blue));border-radius:999px;width:0;transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.bar .n{width:48px;text-align:right;font-weight:700;font-size:14px;flex:none}
+
+.row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.02em;padding:13px 26px;border:1px solid var(--ink);border-radius:999px;cursor:pointer;transition:.3s ease;background:transparent;color:var(--ink)}
+.btn:hover{background:var(--ink);color:#fff}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 rgba(53,133,189,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(53,133,189,.5)}70%{box-shadow:0 0 0 9px rgba(53,133,189,0)}100%{box-shadow:0 0 0 0 rgba(53,133,189,0)}}
+
+.foot{margin-top:30px;color:var(--muted);font-size:13px;line-height:1.75;border-top:1px solid var(--line-soft);padding-top:20px}
+.foot b{color:var(--ink)}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <div class="brand">
+    <span class="mk"><span class="emb"></span></span>
+    <div><b>SARL Paysages König</b><span>Créateur d'extérieurs · Barbonville</span></div>
+  </div>
+
   <div class="eyebrow">Tableau de bord privé</div>
-  <h1>Statistiques du site</h1>
-  <div class="sub">SARL Paysages König · fréquentation du site vitrine · <span class="live"><span class="dot"></span>en direct</span></div>
+  <h1>Statistiques du <em>site</em></h1>
+  <div class="sub">Fréquentation du site vitrine <span class="live"><span class="dot"></span>en direct</span></div>
 
   <div class="grid">
-    <div class="card accent">
+    <div class="card dark">
       <div class="lab">Visites — total</div>
       <div class="val" id="total">…</div>
     </div>
-    <div class="card">
+    <div class="card m2">
       <div class="lab">Ce mois-ci</div>
       <div class="val" id="mois">…</div>
     </div>
   </div>
 
   <div class="hist">
-    <h2>6 derniers mois</h2>
+    <h2>Les <em>6 derniers mois</em></h2>
     <div id="hist"></div>
   </div>
 
   <div class="row">
-    <button onclick="charger()">↻ Actualiser</button>
+    <button class="btn" onclick="charger()">↻ Actualiser</button>
     <span class="live" id="maj"></span>
   </div>
 
   <div class="foot">
     <b>Comptage :</b> 1 visite par navigateur et par jour · <b>sans cookie</b>, sans compte, aucune donnée personnelle (juste un nombre) — conforme RGPD.<br>
-    Cette page est <b>privée</b> (non référencée sur Google, non liée depuis le site) : garde le lien pour toi.
+    Cette page est <b>privée</b> : non référencée sur Google, non liée depuis le site. Garde le lien pour toi.
   </div>
 </div>
 
@@ -77,7 +112,6 @@ var NS="pk-fcfb84d7", API="https://api.counterapi.dev/v1/"+NS+"/";
 var MOIS_FR=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
 
 function lire(key){
-  // lecture SEULE (pas de /up) → n'incrémente pas
   return fetch(API+key+"/").then(function(r){return r.json();})
     .then(function(j){return (j && typeof j.count==="number")?j.count:0;})
     .catch(function(){return 0;});
@@ -88,12 +122,10 @@ function charger(){
   document.getElementById("total").textContent="…";
   document.getElementById("mois").textContent="…";
   var now=new Date();
-  // total + mois courant
   lire("visits").then(function(n){document.getElementById("total").textContent=n.toLocaleString("fr-FR");});
   lire(moisKey(now)).then(function(n){document.getElementById("mois").textContent=n.toLocaleString("fr-FR");});
-  // 6 derniers mois
   var mois=[];
-  for(var i=5;i>=0;i--){var d=new Date(now.getFullYear(),now.getMonth()-i,1);mois.push(d);}
+  for(var i=5;i>=0;i--){mois.push(new Date(now.getFullYear(),now.getMonth()-i,1));}
   Promise.all(mois.map(function(d){return lire(moisKey(d));})).then(function(vals){
     var max=Math.max(1,Math.max.apply(null,vals));
     var html="";
