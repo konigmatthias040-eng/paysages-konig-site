@@ -114,8 +114,15 @@ header.solid .burger span{background:#fff}
 @keyframes cue{0%,100%{transform:scaleY(.35);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
 @keyframes heroUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1.01)}}
+@keyframes heroSlide{0%{opacity:0;transform:scale(1.12)}4%{opacity:1}22%{opacity:1}27%{opacity:0}100%{opacity:0;transform:scale(1.02)}}
+.hero .bg.slideshow img{position:absolute;inset:0;width:100%;opacity:0}
+.hero .bg.slideshow img:first-child{opacity:1}
 @media(prefers-reduced-motion:no-preference){
   .hero .bg img{animation:kenburns 20s ease-out both}
+  .hero .bg.slideshow img{opacity:0;animation:heroSlide 32s linear infinite}
+  .hero .bg.slideshow img:nth-child(2){animation-delay:8s}
+  .hero .bg.slideshow img:nth-child(3){animation-delay:16s}
+  .hero .bg.slideshow img:nth-child(4){animation-delay:24s}
   .hero .eyebrow,.hero h1,.hero p,.hero .cta,.hero .meta{opacity:0;animation:heroUp .95s cubic-bezier(.2,.7,.2,1) forwards}
   .hero .eyebrow{animation-delay:.15s}.hero h1{animation-delay:.32s}.hero p{animation-delay:.54s}.hero .cta{animation-delay:.72s}.hero .meta{animation-delay:.9s}
   .scrollcue{opacity:0;animation:heroUp 1s ease 1.2s forwards}
@@ -458,7 +465,12 @@ footer a:hover{color:#fff}
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="bg"><img src="images/jardin-terrasse-1.jpg" alt="Jardin paysager réalisé par SARL Paysages König : pelouse, massifs en pierre et terrasse" fetchpriority="high"></div>
+  <div class="bg slideshow">
+    <img src="images/jardin-terrasse-1.jpg" alt="Jardin paysager réalisé par SARL Paysages König : pelouse, massifs en pierre et terrasse" fetchpriority="high">
+    <img src="images/allee-facade-1.jpg" alt="Jardin minéral zen avec enrochement, escalier granit et allée pavée" loading="lazy">
+    <img src="images/allee-c1.jpg" alt="Allée de garage en pavés décoratifs multicolores devant une maison" loading="lazy">
+    <img src="images/allee-c2.jpg" alt="Allée en pavés vieillis menant à la maison, finition soignée" loading="lazy">
+  </div>
   <div class="wrap">
     <div class="inner">
       <span class="eyebrow light">SARL Paysages König · Paysagiste à Barbonville (54) · en famille depuis 1929</span>
