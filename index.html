@@ -42,6 +42,16 @@ section{position:relative}
 .eyebrow.light{color:var(--stone-2)}.eyebrow.light::before{background:var(--stone-2)}
 .h-xl{font-size:clamp(2.4rem,5.6vw,4.6rem)}
 .h-lg{font-size:clamp(2rem,4.4vw,3.4rem)}
+/* ----- Notre histoire ----- */
+.histoire{padding:clamp(76px,9vw,128px) 0;background:var(--paper);position:relative;overflow:hidden}
+.histoire .head{max-width:760px;margin:0 auto;text-align:center}
+.histoire-txt{max-width:720px;margin:26px auto 0;text-align:center}
+.histoire-txt p{color:var(--muted);margin-top:16px;line-height:1.8;font-size:1.02rem}
+.histoire-txt strong{color:var(--ink);font-weight:700}
+.frise{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:46px auto 0;max-width:800px}
+.frise-step{flex:1 1 200px;background:#fff;border:1px solid var(--sand);border-radius:20px;padding:24px 20px;text-align:center;box-shadow:var(--shadow-sm)}
+.frise-step b{display:block;font-family:var(--serif);font-weight:600;font-size:32px;color:var(--blue);line-height:1;letter-spacing:-.01em}
+.frise-step span{display:block;margin-top:10px;font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:.02em}
 .h-lg em,.h-xl em{font-style:italic;color:var(--stone)}
 .lead{color:var(--muted);font-size:1.08rem;max-width:46ch}
 
@@ -451,7 +461,7 @@ footer a:hover{color:#fff}
   <div class="bg"><img src="images/jardin-terrasse-1.jpg" alt="Jardin paysager réalisé par SARL Paysages König : pelouse, massifs en pierre et terrasse" fetchpriority="high"></div>
   <div class="wrap">
     <div class="inner">
-      <span class="eyebrow light">SARL Paysages König · Paysagiste à Barbonville (54) · plus de 40&nbsp;ans</span>
+      <span class="eyebrow light">SARL Paysages König · Paysagiste à Barbonville (54) · en famille depuis 1929</span>
       <h1>Votre extérieur,<br><em>pensé pour durer.</em></h1>
       <p>Terrasses, allées, maçonnerie paysagère, engazonnement et plantations. Nous concevons et réalisons des extérieurs soignés — du terrassement aux dernières finitions.</p>
       <div class="cta">
@@ -477,7 +487,7 @@ footer a:hover{color:#fff}
     <div class="grid">
       <div class="ph rv">
         <img src="images/equipe-1.jpg" alt="L'équipe Paysages König sur un chantier d'aménagement">
-        <div class="stat"><b><span data-count="40">0</span></b><span>ans à vos côtés</span></div>
+        <div class="stat"><b><span data-count="97">0</span></b><span>ans de savoir-faire familial</span></div>
       </div>
       <div class="rv d1">
         <span class="eyebrow">Notre savoir-faire</span>
@@ -501,20 +511,40 @@ footer a:hover{color:#fff}
   <div class="wsep bot"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="var(--paper)" d="M0,80 L0,40 C240,72 480,8 720,34 C960,60 1200,84 1440,42 L1440,80 Z"/></svg></div>
 </section>
 
+<!-- ===== NOTRE HISTOIRE ===== -->
+<section class="histoire" id="histoire">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Notre histoire</span>
+      <h2 class="h-lg" style="margin-top:16px">Une famille, un savoir-faire <em>depuis 1929</em></h2>
+    </div>
+    <div class="histoire-txt rv d1">
+      <p>Tout commence en <strong>1929</strong>, à Barbonville, avec les <strong>Pépinières König</strong>&nbsp;: arbres fruitiers, plants et végétaux cultivés au lieu-dit Le&nbsp;Nil. Depuis, le savoir-faire se transmet <strong>de père en fils</strong>.</p>
+      <p>C'est le grand-père, <strong>François König</strong>, qui développe l'activité de <strong>parcs &amp; jardins</strong> aux côtés de la pépinière. La création d'extérieurs devient un métier à part entière&nbsp;: en <strong>1985</strong> naît la SARL, aujourd'hui <strong>Paysages König</strong>.</p>
+      <p>Près d'un siècle plus tard, l'entreprise est <strong>toujours familiale</strong> et <strong>toujours à Barbonville</strong>. Le même engagement qu'au premier jour&nbsp;: des extérieurs pensés pour durer, réalisés avec soin — du premier coup de pelle aux dernières finitions.</p>
+    </div>
+    <div class="frise rv d2">
+      <div class="frise-step"><b>1929</b><span>Les Pépinières König</span></div>
+      <div class="frise-step"><b>1985</b><span>Création de la SARL</span></div>
+      <div class="frise-step"><b>Aujourd'hui</b><span>Toujours en famille</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== NOTRE ENGAGEMENT ===== -->
 <section class="engage" id="engagement">
   <svg class="sinuous" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true"><path d="M-20,120 C240,26 380,192 620,108 S980,18 1240,110 1430,152 1470,84" fill="none" stroke="var(--stone-2)" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 17"/></svg>
   <div class="wrap">
     <div class="engage-head rv">
       <span class="eyebrow">Notre engagement</span>
-      <h2 class="h-lg" style="margin-top:16px">Depuis plus de 40 ans,<br><em>la même exigence.</em></h2>
+      <h2 class="h-lg" style="margin-top:16px">La même exigence,<br><em>chantier après chantier.</em></h2>
       <p>Chantier après chantier, nos équipes s'appliquent avec le même soin — par tous les temps, du terrassement aux dernières finitions. Parce qu'un extérieur bien fait se vit pendant des années.</p>
     </div>
     <div class="values rv d1">
       <div class="value">
         <span class="v-ico"><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-8-6.6-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.4-3 8-8 11z"/></svg></span>
-        <h3>Une histoire familiale</h3>
-        <p>Une maison fondée par François&nbsp;König, d'abord en nom propre puis en SARL — à vos côtés depuis plus de 40&nbsp;ans dans le sud de la Meurthe-et-Moselle.</p>
+        <h3>Une entreprise familiale</h3>
+        <p>Transmise de père en fils, à vos côtés dans le sud de la Meurthe-et-Moselle.</p>
       </div>
       <div class="value">
         <span class="v-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M6 21v-9l6-4 6 4v9M10 21v-5h4v5"/></svg></span>
