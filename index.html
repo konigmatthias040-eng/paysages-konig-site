@@ -240,6 +240,13 @@ header.solid .burger span{background:#fff}
 .fchip{font-family:inherit;font-size:13px;letter-spacing:.02em;padding:9px 18px;border-radius:999px;border:1px solid var(--sand);background:var(--paper);color:var(--muted);cursor:pointer;transition:background .25s,color .25s,border-color .25s,box-shadow .25s,transform .25s}
 .fchip:hover{border-color:var(--stone);color:var(--ink);transform:translateY(-1px)}
 .fchip.active{background:var(--ink);border-color:var(--ink);color:#fff;box-shadow:0 12px 24px -14px rgba(29,33,39,.85)}
+/* ----- sous-filtres (clôtures) ----- */
+.subfilters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:-6px auto 32px;max-width:760px;animation:sfin .35s ease}
+.subfilters[hidden]{display:none}
+@keyframes sfin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.sfchip{font-family:inherit;font-size:12px;letter-spacing:.02em;padding:6px 15px;border-radius:999px;border:1px dashed var(--grey);background:transparent;color:var(--muted);cursor:pointer;transition:background .22s,color .22s,border-color .22s,border-style .22s}
+.sfchip:hover{border-style:solid;border-color:var(--stone);color:var(--ink)}
+.sfchip.active{background:var(--blue);border-color:var(--blue);border-style:solid;color:#fff}
 
 /* ----- avant / après ----- */
 .beforeafter{padding:clamp(84px,10vw,148px) 0;background:var(--paper)}
@@ -455,7 +462,7 @@ footer a:hover{color:#fff}
         <span><b>7 route de Damelevières</b> · 54360 Barbonville</span>
         <span><b>Devis gratuit</b> · étude sur place, sur RDV</span>
         <span><b>Garantie décennale</b> · béton &amp; maçonnerie</span>
-        <span><b>Déplacement</b> · jusqu'à 40 min de route</span>
+        <span><b>Déplacement</b> · jusqu'à 30 min de route</span>
       </div>
     </div>
   </div>
@@ -568,6 +575,13 @@ footer a:hover{color:#fff}
       <button class="fchip" data-filter="clotures">Clôtures</button>
       <button class="fchip" data-filter="all">Tout voir</button>
     </div>
+    <div class="subfilters" id="subfilters-clotures" hidden aria-label="Filtrer les clôtures par style">
+      <button class="sfchip active" data-sub="all">Toutes</button>
+      <button class="sfchip" data-sub="rigide">Rigide</button>
+      <button class="sfchip" data-sub="occultante">Occultante</button>
+      <button class="sfchip" data-sub="composite">Composite</button>
+      <button class="sfchip" data-sub="deco">Panneau déco</button>
+    </div>
     <div class="gal">
       <button class="gcell rv" data-cat="jardins" data-feat="1" data-full="images/jardin-pelouse-1.jpg"><img src="images/jardin-pelouse-1.jpg" alt="" loading="lazy"><span class="gov"><i>Jardins</i></span></button>
       <button class="gcell rv" data-cat="terrasses" data-feat="1" data-full="images/terrasse-carrelee-grise-1.jpg"><img src="images/terrasse-carrelee-grise-1.jpg" alt="" loading="lazy"><span class="gov"><i>Terrasses</i></span></button>
@@ -615,13 +629,13 @@ footer a:hover{color:#fff}
       <button class="gcell rv" data-cat="maconnerie" data-full="images/maconnerie-c1.jpg"><img src="images/maconnerie-c1.jpg" alt="" loading="lazy"><span class="gov"><i>Maçonnerie &amp; béton</i></span></button>
       <button class="gcell rv" data-cat="maconnerie" data-full="images/maconnerie-c2.jpg"><img src="images/maconnerie-c2.jpg" alt="" loading="lazy"><span class="gov"><i>Maçonnerie &amp; béton</i></span></button>
       <button class="gcell rv" data-cat="maconnerie" data-full="images/maconnerie-c3.jpg"><img src="images/maconnerie-c3.jpg" alt="" loading="lazy"><span class="gov"><i>Maçonnerie &amp; béton</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-full="images/cloture-composite.jpg"><img src="images/cloture-composite.jpg" alt="" loading="lazy"><span class="gov"><i>Clôtures</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-feat="1" data-full="images/cloture-rigide-2.jpg"><img src="images/cloture-rigide-2.jpg" alt="" loading="lazy"><span class="gov"><i>Clôtures</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-full="images/cloture-rigide.jpg"><img src="images/cloture-rigide.jpg" alt="" loading="lazy"><span class="gov"><i>Clôtures</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-full="images/cloture-c4.jpg"><img src="images/cloture-c4.jpg" alt="" loading="lazy"><span class="gov"><i>Clôtures</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-full="images/cloture-c1.jpg"><img src="images/cloture-c1.jpg" alt="" loading="lazy"><span class="gov"><i>Clôtures</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-full="images/cloture-c2.jpg"><img src="images/cloture-c2.jpg" alt="" loading="lazy"><span class="gov"><i>Clôtures</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-full="images/cloture-c3.jpg"><img src="images/cloture-c3.jpg" alt="" loading="lazy"><span class="gov"><i>Clôtures</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="composite" data-occ="occ" data-full="images/cloture-composite.jpg"><img src="images/cloture-composite.jpg" alt="" loading="lazy"><span class="gov"><i>Composite</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-feat="1" data-full="images/cloture-rigide-2.jpg"><img src="images/cloture-rigide-2.jpg" alt="" loading="lazy"><span class="gov"><i>Rigide</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-full="images/cloture-rigide.jpg"><img src="images/cloture-rigide.jpg" alt="" loading="lazy"><span class="gov"><i>Rigide</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="composite" data-occ="occ" data-full="images/cloture-c4.jpg"><img src="images/cloture-c4.jpg" alt="" loading="lazy"><span class="gov"><i>Composite déco</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="deco" data-occ="semi" data-full="images/cloture-c1.jpg"><img src="images/cloture-c1.jpg" alt="" loading="lazy"><span class="gov"><i>Panneau déco</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-full="images/cloture-c2.jpg"><img src="images/cloture-c2.jpg" alt="" loading="lazy"><span class="gov"><i>Rigide vert</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="occultante" data-occ="occ" data-full="images/cloture-c3.jpg"><img src="images/cloture-c3.jpg" alt="" loading="lazy"><span class="gov"><i>Occultante tressée</i></span></button>
     </div>
   </div>
 </section>
@@ -829,14 +843,32 @@ footer a:hover{color:#fff}
   /* catalogue : filtre par thème */
   var fchips=[].slice.call(document.querySelectorAll(".fchip"));
   var gcat=[].slice.call(document.querySelectorAll(".gcell"));
-  function applyFilter(cat){
+  var subBar=document.getElementById("subfilters-clotures");
+  var subChips=subBar?[].slice.call(subBar.querySelectorAll(".sfchip")):[];
+  var curCat="feat", curSub="all";
+  function render(){
     gcat.forEach(function(c){
-      var show=(cat==="all"||(cat==="feat"?c.getAttribute("data-feat")==="1":c.getAttribute("data-cat")===cat));
+      var inCat=(curCat==="all"||(curCat==="feat"?c.getAttribute("data-feat")==="1":c.getAttribute("data-cat")===curCat));
+      var inSub=(curCat!=="clotures"||curSub==="all"||c.getAttribute("data-style")===curSub);
+      var show=inCat&&inSub;
       c.style.display=show?"":"none";
       if(show)c.classList.add("in");
     });
-    fchips.forEach(function(ch){ch.classList.toggle("active",ch.getAttribute("data-filter")===cat);});
   }
+  function applyFilter(cat){
+    curCat=cat; curSub="all";
+    render();
+    fchips.forEach(function(ch){ch.classList.toggle("active",ch.getAttribute("data-filter")===cat);});
+    if(subBar){
+      subBar.hidden=(cat!=="clotures");
+      subChips.forEach(function(s){s.classList.toggle("active",s.getAttribute("data-sub")==="all");});
+    }
+  }
+  subChips.forEach(function(s){s.addEventListener("click",function(){
+    curSub=s.getAttribute("data-sub");
+    subChips.forEach(function(x){x.classList.toggle("active",x===s);});
+    render();
+  });});
   fchips.forEach(function(ch){ch.addEventListener("click",function(){applyFilter(ch.getAttribute("data-filter"));});});
   document.querySelectorAll(".cat[data-filter]").forEach(function(t){t.addEventListener("click",function(){applyFilter(t.getAttribute("data-filter"));});});
   applyFilter("feat");
