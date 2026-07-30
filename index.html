@@ -908,6 +908,18 @@ footer a:hover{color:#fff}
 /* Accroche d'appel (section contact) */
 .contact .cta-lead{font-size:clamp(1.08rem,1.5vw,1.28rem);line-height:1.6;margin:0 0 14px;color:rgba(255,255,255,.92);max-width:40ch;font-weight:400}
 .contact .cta-lead::first-line{color:#fff}
+
+/* Bouton J'aime (pied de page) */
+footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.72);font-size:14px}
+.likebtn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:9px 18px;cursor:pointer;transition:transform .2s,background .25s,border-color .25s}
+.likebtn:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.4);transform:translateY(-2px)}
+.likebtn:active{transform:scale(.96)}
+.likebtn .lk-h{color:#ff6b81;font-size:16px;line-height:1}
+.likebtn.liked{background:rgba(255,107,129,.16);border-color:#ff6b81}
+.likebtn.liked .lk-h{color:#ff4d67}
+.likebtn b{font-weight:800}
+@keyframes lkpop{0%{transform:scale(1)}40%{transform:scale(1.45)}100%{transform:scale(1)}}
+.likebtn.pop .lk-h{animation:lkpop .42s}
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
@@ -1324,6 +1336,10 @@ footer a:hover{color:#fff}
         <span>Photos&nbsp;: nos propres réalisations · toute reproduction ou copie strictement interdite</span>
       </div>
     </div>
+    <div class="footlike">
+      <span>Cette page vous plaît ?</span>
+      <button class="likebtn" id="likeBtn" type="button" aria-label="J'aime cette page"><span class="lk-h">♥</span> J'aime <b id="likeCount">…</b></button>
+    </div>
   </div>
 </footer>
 
@@ -1483,6 +1499,24 @@ footer a:hover{color:#fff}
       fetch(API+mois+"/up").catch(function(){});
     }
   }catch(e){}
+})();
+</script>
+<script>
+(function(){
+  var NS="pk-fcfb84d7", API="https://api.counterapi.dev/v1/"+NS+"/";
+  var btn=document.getElementById("likeBtn"), cnt=document.getElementById("likeCount");
+  if(!btn) return;
+  function num(d){ return d&&(d.count!=null?d.count:(d.value!=null?d.value:null)); }
+  function show(n){ if(cnt&&n!=null) cnt.textContent=n; }
+  fetch(API+"jaime").then(function(r){return r.json();}).then(function(d){show(num(d));}).catch(function(){ if(cnt) cnt.textContent=""; });
+  if(localStorage.getItem("pk_like")==="1") btn.classList.add("liked");
+  btn.addEventListener("click",function(){
+    if(localStorage.getItem("pk_like")==="1") return;
+    localStorage.setItem("pk_like","1");
+    btn.classList.add("liked","pop");
+    setTimeout(function(){btn.classList.remove("pop");},430);
+    fetch(API+"jaime/up").then(function(r){return r.json();}).then(function(d){show(num(d));}).catch(function(){});
+  });
 })();
 </script>
 </body>
