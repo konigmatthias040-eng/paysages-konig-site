@@ -443,6 +443,434 @@ footer a:hover{color:#fff}
 .fleaf.fl7{left:75.1%;width:13px;height:15px;background:#7a9b76;animation-duration:13.4s;animation-delay:-7.5s;--drift:40px;--spin:254deg}
 @media(prefers-reduced-motion:reduce){.fbranch,.fleaf{animation:none!important}.fleaf{opacity:0}}
 @media(max-width:640px){.fbranch{opacity:.24;width:120px}.fleaf{opacity:0}}
+
+/* ===== PASSE DESIGN PREMIUM (frise / bulles / vagues / micro-interactions) ===== */
+
+
+/* --- frise-histoire --- */
+/* ================= Frise "Notre histoire" — refonte premium non-linéaire =================
+   CSS additif : override par cascade. Couleurs = variables du thème uniquement
+   (color-mix = variable + alpha ; un seul %23000 dans le SVG sert de MASQUE, pas de couleur). */
+
+.frise{
+  align-items:center;              /* les cartes se décalent autour de l'axe central */
+  gap:34px;
+  padding:76px 14px 98px;          /* place pour les décalages verticaux + la vague */
+  max-width:900px;
+  overflow:visible;
+  isolation:isolate;               /* stacking context propre pour les z-index internes */
+}
+
+/* --- Connecteur : vague fluide (forme = SVG en masque, couleur = dégradé de variables) --- */
+.frise::before{
+  content:"";
+  position:absolute;
+  left:1.5%; right:1.5%;
+  top:50%;
+  height:150px;
+  transform:translateY(-50%);
+  background:linear-gradient(90deg,var(--stone-2),var(--blue),var(--stone-2),var(--blue),var(--stone-2));
+  background-size:200% 100%;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M0 60 C150 20 250 20 400 60 S650 100 800 60 S1050 20 1200 60'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M0 60 C150 20 250 20 400 60 S650 100 800 60 S1050 20 1200 60'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  filter:drop-shadow(0 8px 12px color-mix(in srgb,var(--blue) 22%,transparent));
+  opacity:.9;
+  z-index:0;
+  animation:friseFlow 9s linear infinite;
+}
+
+/* --- Étincelle qui parcourt la frise : le temps qui avance --- */
+.frise::after{
+  content:"";
+  position:absolute;
+  top:50%; left:4%;
+  width:11px; height:11px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#fff,var(--stone-2) 55%,var(--blue));
+  box-shadow:0 0 14px 4px color-mix(in srgb,var(--stone-2) 65%,transparent);
+  transform:translate(-50%,-50%);
+  z-index:1;
+  pointer-events:none;
+  animation:friseSpark 7.5s ease-in-out infinite;
+}
+
+/* --- Cartes : décalages verticaux ALTERNÉS + micro-rotation pour casser l'alignement --- */
+.frise-step{
+  position:relative;
+  z-index:2;
+  overflow:visible;
+  background:linear-gradient(160deg,#fff 0%,var(--paper) 62%,var(--blue-lt) 150%);
+  border:1px solid color-mix(in srgb,var(--grey) 55%,transparent);
+  box-shadow:var(--shadow-sm),inset 0 1px 0 color-mix(in srgb,#fff 70%,transparent);
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s ease,border-color .55s ease;
+  will-change:transform;
+}
+.frise-step:nth-child(1){transform:translateY(-26px) rotate(-1.4deg)}
+.frise-step:nth-child(2){transform:translateY(30px)  rotate(1.2deg)}
+.frise-step:nth-child(3){transform:translateY(-14px) rotate(-.8deg)}
+
+/* --- Numéro géant en filigrane (ordinal, indépendant du texte de l'année) --- */
+.frise-step::after{
+  position:absolute;
+  top:2px; right:14px;
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(58px,7vw,88px);
+  line-height:1;
+  letter-spacing:-.04em;
+  color:color-mix(in srgb,var(--blue) 12%,transparent);
+  z-index:0;
+  pointer-events:none;
+  transition:color .55s ease;
+}
+.frise-step:nth-child(1)::after{content:"01"}
+.frise-step:nth-child(2)::after{content:"02"}
+.frise-step:nth-child(3)::after{content:"03"}
+
+/* --- Pastille travaillée : bille brillante + anneau + pulsation douce --- */
+.frise-step::before{
+  content:"";
+  position:absolute;
+  top:-13px; left:50%;
+  width:16px; height:16px;
+  border-radius:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(circle at 35% 30%,var(--stone-2),var(--blue) 70%);
+  border:3px solid var(--paper);
+  z-index:3;
+  animation:frisePulse 3.4s ease-out infinite;
+}
+
+/* --- Texte lisible AU-DESSUS du filigrane ; année en dégradé accentué --- */
+.frise-step b,
+.frise-step span{position:relative;z-index:1}
+.frise-step b{
+  background:linear-gradient(90deg,var(--blue),var(--stone-2));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:var(--blue);
+}
+
+/* --- Survol prononcé : la carte se soulève, se redresse et s'illumine --- */
+.frise-step:hover{
+  transform:translateY(-44px) rotate(0deg) scale(1.035);
+  box-shadow:var(--shadow),inset 0 1px 0 color-mix(in srgb,#fff 70%,transparent);
+  border-color:color-mix(in srgb,var(--blue) 45%,transparent);
+  z-index:4;
+}
+.frise-step:nth-child(2):hover{transform:translateY(12px) rotate(0deg) scale(1.035)}
+.frise-step:hover::before{animation-duration:1.6s}
+.frise-step:hover::after{color:color-mix(in srgb,var(--blue) 22%,transparent)}
+
+/* --- Empilement mobile : on neutralise décalages/vague pour rester lisible --- */
+@media (max-width:720px){
+  .frise{gap:48px;padding:28px 10px 40px}
+  .frise::before,.frise::after{display:none}
+  .frise-step,
+  .frise-step:nth-child(1),
+  .frise-step:nth-child(2),
+  .frise-step:nth-child(3){transform:none;width:min(340px,86vw)}
+  .frise-step:hover,
+  .frise-step:nth-child(2):hover{transform:translateY(-6px) scale(1.02)}
+}
+
+/* --- Accessibilité : on coupe les animations en boucle --- */
+@media (prefers-reduced-motion:reduce){
+  .frise::before{animation:none}
+  .frise::after{animation:none;display:none}
+  .frise-step::before{animation:none}
+}
+
+@keyframes friseFlow{
+  from{background-position:0% 50%}
+  to{background-position:200% 50%}
+}
+@keyframes frisePulse{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--blue) 45%,transparent),0 10px 20px -8px color-mix(in srgb,var(--ink) 45%,transparent)}
+  70%{box-shadow:0 0 0 15px color-mix(in srgb,var(--blue) 0%,transparent),0 10px 20px -8px color-mix(in srgb,var(--ink) 45%,transparent)}
+  100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--blue) 0%,transparent),0 10px 20px -8px color-mix(in srgb,var(--ink) 45%,transparent)}
+}
+@keyframes friseSpark{
+  0%{left:4%;transform:translate(-50%,-50%) translateY(-30px)}
+  25%{transform:translate(-50%,-50%) translateY(6px)}
+  50%{left:50%;transform:translate(-50%,-50%) translateY(36px)}
+  75%{transform:translate(-50%,-50%) translateY(6px)}
+  100%{left:96%;transform:translate(-50%,-50%) translateY(-30px)}
+}
+
+/* --- specialites-bulles --- */
+/* ===== Section 'Nos specialites' : bulles plus organiques + halo premium ===== */
+/* CSS additif (append) — override par cascade + specificite renforcee */
+
+.cat-grid{ align-items: flex-start; overflow: visible; }
+
+.cat{
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  /* 5 couches : 3 anneaux transparents + drop de repos + halo transparent
+     -> l'anneau bleu peut "grandir" en douceur au survol */
+  box-shadow:
+    0 0 0 0 rgba(255,255,255,0),
+    0 0 0 0 rgba(53,133,189,0),
+    0 0 0 0 rgba(126,187,227,0),
+    var(--shadow-sm),
+    0 0 0 0 rgba(126,187,227,0);
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    box-shadow .6s cubic-bezier(.22,1,.36,1),
+    filter .6s ease;
+  /* Flottement via 'top' (pas transform) -> aucun conflit avec le hover */
+  animation: catFloatA 6.5s ease-in-out infinite;
+  will-change: transform, top;
+}
+
+/* Decalage vertical organique FORTEMENT accentue + flottement desynchronise */
+.cat-grid .cat:nth-child(1){ margin-top: 0;    animation-name: catFloatA; animation-duration: 6.4s; animation-delay: -0.2s; }
+.cat-grid .cat:nth-child(2){ margin-top: 58px; animation-name: catFloatB; animation-duration: 7.7s; animation-delay: -1.9s; }
+.cat-grid .cat:nth-child(3){ margin-top: 18px; animation-name: catFloatA; animation-duration: 6.9s; animation-delay: -3.2s; }
+.cat-grid .cat:nth-child(4){ margin-top: 76px; animation-name: catFloatB; animation-duration: 8.3s; animation-delay: -0.7s; }
+.cat-grid .cat:nth-child(5){ margin-top: 30px; animation-name: catFloatA; animation-duration: 7.1s; animation-delay: -2.5s; }
+.cat-grid .cat:nth-child(6){ margin-top: 64px; animation-name: catFloatB; animation-duration: 6.6s; animation-delay: -4.1s; }
+.cat-grid .cat:nth-child(7){ margin-top: 8px;  animation-name: catFloatA; animation-duration: 7.9s; animation-delay: -1.3s; }
+
+/* Overlay assombrissant : transition pour l'eclaircissement */
+.cat::after{ transition: opacity .6s ease; }
+
+/* ===== SURVOL / FOCUS : anneau bleu lumineux + zoom + eclaircissement + rotation ===== */
+.cat:hover, .cat:focus-visible{
+  z-index: 6;
+  transform: translateY(-8px) scale(1.07) rotate(-2deg);
+  filter: saturate(1.1) brightness(1.12);
+  box-shadow:
+    0 0 0 2px  rgba(255,255,255,.70),   /* liseré net */
+    0 0 0 7px  rgba(53,133,189,.82),    /* anneau bleu (--blue) */
+    0 0 0 13px rgba(126,187,227,.30),   /* halo clair (--stone-2) */
+    0 28px 60px -24px rgba(53,133,189,.70),
+    0 0 55px 4px rgba(126,187,227,.50); /* glow */
+}
+/* rotation alternee -> casse encore les alignements droits */
+.cat:nth-child(even):hover, .cat:nth-child(even):focus-visible{
+  transform: translateY(-8px) scale(1.07) rotate(2deg);
+}
+/* eclaircissement de l'overlay */
+.cat:hover::after, .cat:focus-visible::after{ opacity: .48; }
+
+/* Texte : lisibilite quand l'overlay s'eclaircit + micro-mouvement */
+.cat-in{ transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.cat-in b{ text-shadow: 0 2px 14px rgba(29,33,39,.55); }
+.cat-in i{ opacity: .86; text-shadow: 0 1px 10px rgba(29,33,39,.5); transition: opacity .5s ease; }
+.cat:hover .cat-in, .cat:focus-visible .cat-in{ transform: translateY(-3px); }
+.cat:hover .cat-in i, .cat:focus-visible .cat-in i{ opacity: 1; }
+
+/* Mobile : rythme adouci pour eviter des ecarts trop marques */
+@media (max-width: 760px){
+  .cat-grid .cat:nth-child(odd){  margin-top: 12px; }
+  .cat-grid .cat:nth-child(even){ margin-top: 38px; }
+  .cat:hover, .cat:focus-visible,
+  .cat:nth-child(even):hover, .cat:nth-child(even):focus-visible{
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
+/* Accessibilite : pas de flottement en boucle ni de gros deplacement */
+@media (prefers-reduced-motion: reduce){
+  .cat{ animation: none !important; top: 0 !important; }
+  .cat:hover, .cat:focus-visible,
+  .cat:nth-child(even):hover, .cat:nth-child(even):focus-visible{ transform: none; }
+  .cat-in, .cat:hover .cat-in, .cat:focus-visible .cat-in{ transform: none; }
+}
+
+@keyframes catFloatA{
+  0%   { top: 0; }
+  25%  { top: -9px; }
+  55%  { top: -17px; }
+  80%  { top: -6px; }
+  100% { top: 0; }
+}
+@keyframes catFloatB{
+  0%   { top: 0; }
+  30%  { top: -15px; }
+  60%  { top: -7px; }
+  85%  { top: -19px; }
+  100% { top: 0; }
+}
+
+/* --- vagues-separateurs --- */
+/* ============================================================
+   VAGUES MULTI-COUCHES — relief & profondeur (100% additif)
+   Aucune modif HTML. On empile 2 vagues derrière la vague
+   existante + une ombre douce qui épouse le contour.
+   ============================================================ */
+
+.wsep{overflow:visible}
+
+/* --- Vague de premier plan : au-dessus des couches arrière + ombre --- */
+.wsep svg{position:relative;z-index:2}
+.wsep.top svg{filter:drop-shadow(0 7px 11px rgba(29,33,39,.14))}
+.wsep.bot svg{filter:drop-shadow(0 -7px 11px rgba(29,33,39,.14))}
+
+/* --- Couches arrière : masque = forme de la vague, couleur = variable
+       thème (donc reste theme-aware, rien de codé en dur) --- */
+.wsep::before,
+.wsep::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  transform:translateY(var(--wy));
+  will-change:transform;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  -webkit-mask-position:center;mask-position:center;
+}
+
+/* 2e couche : crête intermédiaire, bien lisible */
+.wsep::before{z-index:1;background-color:var(--sand);opacity:.92}
+/* 3e couche : crête lointaine, en murmure -> dégradé de reliefs */
+.wsep::after{z-index:0;background-color:var(--paper-2);opacity:.6}
+
+/* Masque — séparateur HAUT (vague à bord ondulé inférieur) */
+.wsep.top::before,
+.wsep.top::after{
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%2080'%20preserveAspectRatio='none'%3E%3Cpath%20fill='%23fff'%20d='M0,0%20H1440%20V38%20C1200,66%20960,66%20720,44%20C480,22%20240,22%200,50%20Z'/%3E%3C/svg%3E");
+          mask-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%2080'%20preserveAspectRatio='none'%3E%3Cpath%20fill='%23fff'%20d='M0,0%20H1440%20V38%20C1200,66%20960,66%20720,44%20C480,22%20240,22%200,50%20Z'/%3E%3C/svg%3E");
+}
+.wsep.top::before{--wy:9px;--wy2:12px}
+.wsep.top::after{--wy:16px;--wy2:20px}
+
+/* Masque — séparateur BAS (miroir vertical : bord ondulé supérieur) */
+.wsep.bot::before,
+.wsep.bot::after{
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%2080'%20preserveAspectRatio='none'%3E%3Cpath%20fill='%23fff'%20d='M0,80%20H1440%20V42%20C1200,14%20960,14%20720,36%20C480,58%20240,58%200,30%20Z'/%3E%3C/svg%3E");
+          mask-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%2080'%20preserveAspectRatio='none'%3E%3Cpath%20fill='%23fff'%20d='M0,80%20H1440%20V42%20C1200,14%20960,14%20720,36%20C480,58%20240,58%200,30%20Z'/%3E%3C/svg%3E");
+}
+.wsep.bot::before{--wy:-9px;--wy2:-12px}
+.wsep.bot::after{--wy:-16px;--wy2:-20px}
+
+/* Respiration lente en parallaxe (durées différentes = profondeur vivante),
+   coupée pour prefers-reduced-motion */
+@media (prefers-reduced-motion:no-preference){
+  .wsep::before{animation:wsepBob 7s ease-in-out infinite alternate}
+  .wsep::after{animation:wsepBob 9.5s ease-in-out infinite alternate}
+}
+
+/* Filet de sécurité : si le navigateur ne gère pas mask-image, on masque
+   les couches arrière pour éviter un rectangle plein disgracieux */
+@supports not ((mask-image:url("#")) or (-webkit-mask-image:url("#"))){
+  .wsep::before,
+  .wsep::after{display:none}
+}
+
+@keyframes wsepBob{from{transform:translateY(var(--wy))}to{transform:translateY(var(--wy2))}}
+
+/* --- micro-interactions --- */
+/* ===== Micro-interactions premium — finitions globales ===== */
+
+/* Transitions de base plus douces sur tous les éléments interactifs */
+.btn, .tel, .deskcta, .fchip{
+  transition: transform .38s cubic-bezier(.2,.85,.25,1),
+              box-shadow .38s cubic-bezier(.2,.85,.25,1),
+              background-color .3s ease, color .3s ease,
+              border-color .3s ease, filter .3s ease;
+}
+
+/* Boutons : effet de brillance qui balaie + relief au survol */
+.btn, .tel, .deskcta{ position: relative; overflow: hidden; }
+.btn::after, .tel::after, .deskcta::after{
+  content:"";
+  position:absolute;
+  top:-15%; left:-135%;
+  width:65%; height:130%;
+  background: linear-gradient(115deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.5) 50%,
+    rgba(255,255,255,0) 100%);
+  transform: skewX(-18deg);
+  transition: left .65s cubic-bezier(.2,.85,.25,1);
+  pointer-events:none;
+}
+.btn:hover::after, .tel:hover::after, .deskcta:hover::after,
+.btn:focus-visible::after, .tel:focus-visible::after, .deskcta:focus-visible::after{ left:155%; }
+.btn:hover, .tel:hover, .deskcta:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px -20px rgba(53,133,189,.55);
+  filter: saturate(1.04);
+}
+.btn:active, .tel:active, .deskcta:active{
+  transform: translateY(0) scale(.98);
+  transition-duration:.12s;
+}
+
+/* Respiration lumineuse discrète sur le CTA téléphone principal */
+.tel, .deskcta{ animation: cxaGlow 4.6s ease-in-out infinite; }
+.tel:hover, .deskcta:hover, .tel:focus-visible, .deskcta:focus-visible{ animation: none; }
+
+/* Liens de navigation : soulignement animé depuis la gauche */
+.main a{ position: relative; transition: color .3s ease; }
+.main a::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-3px;
+  height:2px; width:100%;
+  background: linear-gradient(90deg, var(--stone), var(--stone-2));
+  border-radius:2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .4s cubic-bezier(.2,.85,.25,1);
+}
+.main a:hover, .main a:focus-visible{ color: var(--stone); }
+.main a:hover::after, .main a:focus-visible::after{ transform: scaleX(1); }
+
+/* Puces de filtre : léger soulèvement + état sélectionné */
+.fchip:hover{
+  transform: translateY(-2px);
+  background-color: var(--blue-lt);
+  color: var(--stone);
+  box-shadow: var(--shadow-sm);
+}
+.fchip:active{ transform: translateY(0) scale(.97); }
+.fchip[aria-pressed="true"], .fchip[aria-selected="true"], .fchip.is-active, .fchip.active{
+  background-color: var(--stone);
+  color: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Cartes galerie : relief accentué + léger décadrage premium */
+.gcell{
+  overflow: hidden;
+  transition: transform .55s cubic-bezier(.2,.85,.25,1),
+              box-shadow .55s cubic-bezier(.2,.85,.25,1);
+}
+.gcell:hover{
+  transform: translateY(-6px) rotate(-.35deg);
+  box-shadow: var(--shadow);
+}
+.gcell img{ transition: transform .8s cubic-bezier(.2,.85,.25,1); }
+.gcell:hover img{ transform: scale(1.05); }
+
+/* Focus visibles et accessibles */
+.btn:focus-visible, .tel:focus-visible, .deskcta:focus-visible,
+.main a:focus-visible, .fchip:focus-visible, .gcell:focus-visible{
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* Respect de prefers-reduced-motion (animations en boucle & transforms) */
+@media (prefers-reduced-motion: reduce){
+  .tel, .deskcta{ animation: none; }
+  .btn:hover, .tel:hover, .deskcta:hover,
+  .btn:active, .tel:active, .deskcta:active,
+  .fchip:hover, .fchip:active,
+  .gcell:hover, .gcell:hover img{ transform: none; }
+  .btn::after, .tel::after, .deskcta::after{ display:none; }
+  .main a::after{ transition: none; }
+}
+
+@keyframes cxaGlow{
+  0%, 100%{ box-shadow: var(--shadow-sm); }
+  50%{ box-shadow: 0 22px 46px -22px rgba(53,133,189,.5); }
+}
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
