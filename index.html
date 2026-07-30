@@ -1338,7 +1338,7 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
     </div>
     <div class="footlike">
       <span>Cette page vous plaît ?</span>
-      <button class="likebtn" id="likeBtn" type="button" aria-label="J'aime cette page"><span class="lk-h">♥</span> J'aime <b id="likeCount">…</b></button>
+      <button class="likebtn" id="likeBtn" type="button" aria-label="J'aime cette page"><span class="lk-h">♥</span> J'aime <b id="likeCount">0</b></button>
     </div>
   </div>
 </footer>
@@ -1508,7 +1508,7 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
   if(!btn) return;
   function num(d){ return d&&(d.count!=null?d.count:(d.value!=null?d.value:null)); }
   function show(n){ if(cnt&&n!=null) cnt.textContent=n; }
-  fetch(API+"jaime").then(function(r){return r.json();}).then(function(d){show(num(d));}).catch(function(){ if(cnt) cnt.textContent=""; });
+  fetch(API+"jaime").then(function(r){return r.json();}).then(function(d){var n=num(d);show(n==null?0:n);}).catch(function(){});
   if(localStorage.getItem("pk_like")==="1") btn.classList.add("liked");
   btn.addEventListener("click",function(){
     if(localStorage.getItem("pk_like")==="1") return;
