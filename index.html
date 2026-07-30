@@ -1094,7 +1094,7 @@ footer a:hover{color:#fff}
     <div class="head rv">
       <span class="eyebrow">Réalisations</span>
       <h2 class="h-lg" style="margin:18px 0 0">Nos réalisations, <em>en images</em></h2>
-      <p>Quelques réalisations à la une — cliquez un thème pour explorer tout notre travail par catégorie.</p>
+      <p id="galIntro">Quelques réalisations à la une — cliquez un thème pour explorer tout notre travail.</p>
     </div>
     <div class="filters rv" id="filters">
       <button class="fchip active" data-filter="feat">À la une</button>
@@ -1428,9 +1428,22 @@ footer a:hover{color:#fff}
       if(show)c.classList.add("in");
     });
   }
+  var galIntro=document.getElementById("galIntro");
+  var TEASERS={
+    feat:"Quelques réalisations à la une — cliquez un thème pour explorer tout notre travail.",
+    all:"Tout notre travail réuni — parcourez l'ensemble de nos réalisations.",
+    terrasses:"Une terrasse, c'est une pièce de vie en plus — imaginons la vôtre.",
+    allees:"Une belle entrée donne le ton dès le portail — pavés, dalles, sur mesure.",
+    escaliers:"Relier vos niveaux avec caractère — escaliers, murets et enrochement.",
+    jardins:"Un jardin vivant, pensé pour durer — engazonnement, massifs, plantations.",
+    mineral:"Le minéral qui structure et embellit, sans entretien — enrochement, galets, ardoise.",
+    maconnerie:"Des bases solides et durables, garanties dix ans — dalles, murets, béton.",
+    clotures:"Envie de sécuriser votre terrain ou de gagner en intimité ? Une clôture qui protège, un brise-vue qui vous met à l'abri des regards."
+  };
   function applyFilter(cat){
     curCat=cat; curSub="all";
     render();
+    if(galIntro){galIntro.textContent=TEASERS[cat]||TEASERS.feat;}
     fchips.forEach(function(ch){ch.classList.toggle("active",ch.getAttribute("data-filter")===cat);});
     if(subBar){
       subBar.hidden=(cat!=="clotures");
