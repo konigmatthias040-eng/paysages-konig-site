@@ -48,10 +48,15 @@ section{position:relative}
 .histoire-txt{max-width:720px;margin:26px auto 0;text-align:center}
 .histoire-txt p{color:var(--muted);margin-top:16px;line-height:1.8;font-size:1.02rem}
 .histoire-txt strong{color:var(--ink);font-weight:700}
-.frise{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:46px auto 0;max-width:800px}
-.frise-step{flex:1 1 200px;background:#fff;border:1px solid var(--sand);border-radius:20px;padding:24px 20px;text-align:center;box-shadow:var(--shadow-sm)}
-.frise-step b{display:block;font-family:var(--serif);font-weight:600;font-size:32px;color:var(--blue);line-height:1;letter-spacing:-.01em}
-.frise-step span{display:block;margin-top:10px;font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:.02em}
+.frise{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin:60px auto 0;max-width:860px}
+.frise::before{content:"";position:absolute;top:0;left:13%;right:13%;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,var(--blue-lt) 18%,var(--blue) 50%,var(--blue-lt) 82%,transparent);z-index:0}
+@media(max-width:640px){.frise::before{display:none}}
+.frise-step{position:relative;z-index:1;flex:1 1 210px;background:#fff;border:1px solid var(--sand);border-radius:24px;padding:44px 22px 28px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .55s cubic-bezier(.2,.7,.2,1),box-shadow .55s,border-color .55s}
+.frise-step::before{content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;background:var(--blue);border:4px solid #fff;box-shadow:0 0 0 3px var(--blue-lt),0 6px 16px -4px rgba(53,133,189,.7);z-index:2;transition:background .45s,transform .45s}
+.frise-step:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:var(--blue-lt)}
+.frise-step:hover::before{background:var(--stone-2);transform:translateX(-50%) scale(1.15)}
+.frise-step b{display:block;font-family:var(--serif);font-weight:600;font-size:34px;color:var(--blue);line-height:1;letter-spacing:-.01em}
+.frise-step span{display:block;margin-top:11px;font-size:11.5px;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .h-lg em,.h-xl em{font-style:italic;color:var(--stone)}
 .lead{color:var(--muted);font-size:1.08rem;max-width:46ch}
 
