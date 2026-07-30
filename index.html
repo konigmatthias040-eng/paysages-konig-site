@@ -880,16 +880,15 @@ footer a:hover{color:#fff}
 .contact .devis-hl b{font-weight:800;letter-spacing:.01em}
 .contact .devis-hl span{opacity:.9;font-weight:600}
 
-/* ===== Notre histoire sombre + fondu TRES progressif (bords dissous dans le clair) ===== */
-.histoire{background:#3d4a5b;position:relative;overflow:hidden;padding-top:232px;padding-bottom:232px}
+/* ===== Notre histoire : bleu-ardoise, transitions par VAGUES + halo bleu doux ===== */
+.histoire{background:#3d4a5b;position:relative;box-shadow:inset 0 46px 64px -42px rgba(126,187,227,.38),inset 0 -46px 64px -42px rgba(126,187,227,.30)}
 .histoire>.wrap{position:relative;z-index:2}
-.histoire::before{content:"";position:absolute;left:0;right:0;top:0;height:255px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--paper) 0%,rgba(245,248,251,.78) 26%,rgba(126,187,227,.10) 62%,rgba(61,74,91,0) 100%)}
-.histoire::after{content:"";position:absolute;left:0;right:0;bottom:0;height:255px;z-index:1;pointer-events:none;background:linear-gradient(to top,var(--paper) 0%,rgba(245,248,251,.78) 26%,rgba(126,187,227,.10) 62%,rgba(61,74,91,0) 100%)}
 .histoire .eyebrow{color:var(--stone-2)}
 .histoire h2{color:#fff}
 .histoire h2 em{color:var(--stone-2)}
-.histoire-txt p{color:rgba(255,255,255,.82)}
+.histoire-txt p{color:rgba(255,255,255,.85)}
 .histoire-txt strong{color:#fff}
+.banner .wsep.bot svg path{fill:#3d4a5b}
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
@@ -1012,6 +1011,7 @@ footer a:hover{color:#fff}
       <div class="frise-step"><b>Aujourd'hui</b><span>Toujours en famille</span></div>
     </div>
   </div>
+  <div class="wsep bot"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="var(--paper)" d="M0,80 L0,40 C240,72 480,8 720,34 C960,60 1200,84 1440,42 L1440,80 Z"/></svg></div>
 </section>
 
 <!-- ===== NOTRE ENGAGEMENT ===== -->
