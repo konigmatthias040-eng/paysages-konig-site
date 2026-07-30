@@ -879,6 +879,17 @@ footer a:hover{color:#fff}
 .contact .devis-hl{display:inline-flex;align-items:center;gap:8px;margin:16px 0 4px;padding:9px 18px;border-radius:999px;background:linear-gradient(135deg,var(--stone-2),var(--blue));color:#fff;font-size:14px;box-shadow:0 14px 30px -12px rgba(53,133,189,.8);animation:cxaGlow 4.6s ease-in-out infinite}
 .contact .devis-hl b{font-weight:800;letter-spacing:.01em}
 .contact .devis-hl span{opacity:.9;font-weight:600}
+
+/* ===== Notre histoire sombre + fondu TRES progressif (bords dissous dans le clair) ===== */
+.histoire{background:#14171d;position:relative;overflow:hidden;padding-top:232px;padding-bottom:232px}
+.histoire>.wrap{position:relative;z-index:2}
+.histoire::before{content:"";position:absolute;left:0;right:0;top:0;height:255px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--paper) 0%,rgba(245,248,251,.78) 26%,rgba(126,187,227,.10) 62%,rgba(20,23,29,0) 100%)}
+.histoire::after{content:"";position:absolute;left:0;right:0;bottom:0;height:255px;z-index:1;pointer-events:none;background:linear-gradient(to top,var(--paper) 0%,rgba(245,248,251,.78) 26%,rgba(126,187,227,.10) 62%,rgba(20,23,29,0) 100%)}
+.histoire .eyebrow{color:var(--stone-2)}
+.histoire h2{color:#fff}
+.histoire h2 em{color:var(--stone-2)}
+.histoire-txt p{color:rgba(255,255,255,.82)}
+.histoire-txt strong{color:#fff}
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
