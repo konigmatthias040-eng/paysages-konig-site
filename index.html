@@ -879,19 +879,6 @@ footer a:hover{color:#fff}
 .contact .devis-hl{display:inline-flex;align-items:center;gap:8px;margin:16px 0 4px;padding:9px 18px;border-radius:999px;background:linear-gradient(135deg,var(--stone-2),var(--blue));color:#fff;font-size:14px;box-shadow:0 14px 30px -12px rgba(53,133,189,.8);animation:cxaGlow 4.6s ease-in-out infinite}
 .contact .devis-hl b{font-weight:800;letter-spacing:.01em}
 .contact .devis-hl span{opacity:.9;font-weight:600}
-
-/* ===== TEST v2: "Notre histoire" sombre AVEC transitions fondues (bords degrades + halo bleu) ===== */
-.histoire{background:#14171d;position:relative;overflow:hidden;padding-top:174px;padding-bottom:174px;box-shadow:inset 0 95px 120px -70px rgba(126,187,227,.42), inset 0 -95px 120px -70px rgba(126,187,227,.32)}
-.histoire>.wrap{position:relative;z-index:2}
-/* fondu HAUT: le clair du dessus se dissout dans le sombre (transition douce) */
-.histoire::before{content:"";position:absolute;left:0;right:0;top:0;height:165px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--paper),rgba(245,248,251,.5) 45%,rgba(245,248,251,0) 100%)}
-/* fondu BAS: le sombre se dissout dans le clair du dessous */
-.histoire::after{content:"";position:absolute;left:0;right:0;bottom:0;height:165px;z-index:1;pointer-events:none;background:linear-gradient(to top,var(--paper),rgba(245,248,251,.5) 45%,rgba(245,248,251,0) 100%)}
-.histoire .eyebrow{color:var(--stone-2)}
-.histoire h2{color:#fff}
-.histoire h2 em{color:var(--stone-2)}
-.histoire-txt p{color:rgba(255,255,255,.82)}
-.histoire-txt strong{color:#fff}
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
