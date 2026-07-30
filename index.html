@@ -879,6 +879,17 @@ footer a:hover{color:#fff}
 .contact .devis-hl{display:inline-flex;align-items:center;gap:8px;margin:16px 0 4px;padding:9px 18px;border-radius:999px;background:linear-gradient(135deg,var(--stone-2),var(--blue));color:#fff;font-size:14px;box-shadow:0 14px 30px -12px rgba(53,133,189,.8);animation:cxaGlow 4.6s ease-in-out infinite}
 .contact .devis-hl b{font-weight:800;letter-spacing:.01em}
 .contact .devis-hl span{opacity:.9;font-weight:600}
+
+/* ===== TEST: section "Notre histoire" en fond sombre cinematographique ===== */
+.histoire{background:radial-gradient(130% 100% at 50% -8%, #273040 0%, #191f27 55%, #12151a 100%)}
+.histoire::before{content:"";position:absolute;left:50%;top:78px;width:min(680px,80%);height:2px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--stone-2),transparent);opacity:.5;box-shadow:0 0 22px 2px rgba(126,187,227,.45);pointer-events:none}
+.histoire .eyebrow{color:var(--stone-2)}
+.histoire h2{color:#fff}
+.histoire h2 em{color:var(--stone-2)}
+.histoire-txt p{color:rgba(255,255,255,.8)}
+.histoire-txt strong{color:#fff}
+/* raccord: la vague basse du bandeau au-dessus passe en sombre pour couler dans la section */
+.banner .wsep.bot svg path{fill:#273040}
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
