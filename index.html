@@ -614,7 +614,7 @@ footer a:hover{color:#fff}
     filter .6s ease;
   /* Flottement via 'top' (pas transform) -> aucun conflit avec le hover */
   animation: catFloatA 6.5s ease-in-out infinite;
-  will-change: transform, top;
+  will-change: transform, translate;
 }
 
 /* Decalage vertical organique FORTEMENT accentue + flottement desynchronise */
@@ -667,25 +667,25 @@ footer a:hover{color:#fff}
 
 /* Accessibilite : pas de flottement en boucle ni de gros deplacement */
 @media (prefers-reduced-motion: reduce){
-  .cat{ animation: none !important; top: 0 !important; }
+  .cat{ animation: none !important; translate: 0 !important; }
   .cat:hover, .cat:focus-visible,
   .cat:nth-child(even):hover, .cat:nth-child(even):focus-visible{ transform: none; }
   .cat-in, .cat:hover .cat-in, .cat:focus-visible .cat-in{ transform: none; }
 }
 
 @keyframes catFloatA{
-  0%   { top: 0; }
-  25%  { top: -9px; }
-  55%  { top: -17px; }
-  80%  { top: -6px; }
-  100% { top: 0; }
+  0%   { translate: 0 0; }
+  25%  { translate: 0 -9px; }
+  55%  { translate: 0 -17px; }
+  80%  { translate: 0 -6px; }
+  100% { translate: 0 0; }
 }
 @keyframes catFloatB{
-  0%   { top: 0; }
-  30%  { top: -15px; }
-  60%  { top: -7px; }
-  85%  { top: -19px; }
-  100% { top: 0; }
+  0%   { translate: 0 0; }
+  30%  { translate: 0 -15px; }
+  60%  { translate: 0 -7px; }
+  85%  { translate: 0 -19px; }
+  100% { translate: 0 0; }
 }
 
 /* --- vagues-separateurs --- */
@@ -865,7 +865,7 @@ footer a:hover{color:#fff}
 }
 
 /* Fix bulles: flottement retire (mouvement juge saccade car il animait 'top') — decalage + survol conserves */
-.cat{animation:none!important}
+/* bulles : flottement réactivé (translate) */
 
 /* Badge Devis gratuit mis en avant (section contact) */
 .contact .devis-hl{display:inline-flex;align-items:center;gap:8px;margin:16px 0 4px;padding:9px 18px;border-radius:999px;background:linear-gradient(135deg,var(--stone-2),var(--blue));color:#fff;font-size:14px;box-shadow:0 14px 30px -12px rgba(53,133,189,.8);animation:cxaGlow 4.6s ease-in-out infinite}
