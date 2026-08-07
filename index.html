@@ -186,6 +186,7 @@ header.solid .burger span{background:#fff}
 .intro .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(40px,6vw,90px);align-items:center}
 .intro .ph{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:4/4.6;box-shadow:var(--shadow)}
 .intro .ph img{width:100%;height:100%;object-fit:cover}
+.intro .ph .phgrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;width:100%;height:100%;background:#fff}
 .intro .stat{position:absolute;left:0;bottom:0;background:var(--ink);color:#fff;padding:24px 30px}
 .intro .stat b{font-family:var(--serif);font-size:2.6rem;display:block;line-height:1}
 .intro .stat span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-2)}
@@ -1039,7 +1040,12 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
   <div class="wrap">
     <div class="grid">
       <div class="ph rv">
-        <img src="images/equipe-1.jpg" alt="L'équipe Paysages König sur un chantier d'aménagement">
+        <div class="phgrid">
+          <img src="images/terrasse-rosace-1.jpg" alt="Terrasse en pierre naturelle réalisée par Paysages König" loading="lazy">
+          <img src="images/allee-opus-1.jpg" alt="Entrée de garage en pavés réalisée par Paysages König" loading="lazy">
+          <img src="images/cloture-composite.jpg" alt="Clôture composite avec claustra posée par Paysages König" loading="lazy">
+          <img src="images/jardin-terrasse-1.jpg" alt="Jardin et terrasse aménagés par Paysages König" loading="lazy">
+        </div>
         <div class="stat"><b><span id="statAnnees" data-count="97">0</span></b><span>ans de savoir-faire familial</span></div>
       </div>
       <div class="rv d1">
