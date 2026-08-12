@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V6HZ22JENF"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1V6HZ22JENF');</script>
+<!-- Google Analytics : chargé UNIQUEMENT après consentement (bandeau cookies en bas de page) -->
+
 <meta name="robots" content="index, follow">
 <script>if('scrollRestoration'in history)history.scrollRestoration='manual';window.addEventListener('load',function(){if(!location.hash)window.scrollTo(0,0);});</script>
 <title>SARL Paysages König — Créateur d'extérieurs · Barbonville (54)</title>
@@ -1397,6 +1396,7 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
         <span>Le Nil, 54360 Barbonville</span>
         <span>© <span id="year"></span> SARL Paysages König · tous droits réservés</span>
         <span style="font-size:11px;opacity:.5">Conception &amp; réalisation du site — Matthias König</span>
+        <span style="font-size:11px;opacity:.5"><a href="#" onclick="pkCookies();return false;" style="color:inherit;text-decoration:underline">Gérer les cookies</a></span>
       </div>
     </div>
     <div class="footlike">
@@ -1581,6 +1581,35 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
     setTimeout(function(){btn.classList.remove("pop");},430);
     fetch(API+"jaime/up").then(function(r){return r.json();}).then(function(d){show(num(d));}).catch(function(){});
   });
+})();
+</script>
+<!-- ===== Bandeau consentement cookies + Google Analytics (RGPD) ===== -->
+<div id="ckbar" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#1d2127;color:#eef3f7;padding:14px 18px;box-shadow:0 -8px 28px rgba(0,0,0,.35);font-family:'Hanken Grotesk',system-ui,Arial,sans-serif;font-size:14px;line-height:1.5">
+  <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;justify-content:center;text-align:center">
+    <span style="flex:1 1 320px;min-width:240px">🍪 Nous utilisons <strong>Google Analytics</strong> (cookies de mesure d'audience) pour améliorer votre visite. Vous êtes libre d'accepter ou de refuser.</span>
+    <span style="display:flex;gap:10px;flex:0 0 auto">
+      <button type="button" id="ck-no" style="background:transparent;border:1px solid #6c7883;color:#cfe0ee;padding:9px 20px;border-radius:24px;font:inherit;cursor:pointer">Refuser</button>
+      <button type="button" id="ck-yes" style="background:#3585bd;border:0;color:#fff;padding:10px 24px;border-radius:24px;font:inherit;font-weight:600;cursor:pointer">Accepter</button>
+    </span>
+  </div>
+</div>
+<script>
+(function(){
+  var GA="G-1V6HZ22JENF",KEY="pk_consent";
+  function loadGA(){
+    if(window.__gaOn)return;window.__gaOn=1;
+    var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+GA;document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};
+    gtag("js",new Date());gtag("config",GA);
+  }
+  var bar=document.getElementById("ckbar"),c=null;
+  try{c=localStorage.getItem(KEY);}catch(e){}
+  if(c==="yes"){loadGA();}
+  else if(c!=="no"){bar.style.display="block";}
+  var y=document.getElementById("ck-yes"),n=document.getElementById("ck-no");
+  y.onclick=function(){try{localStorage.setItem(KEY,"yes");}catch(e){}bar.style.display="none";loadGA();};
+  n.onclick=function(){try{localStorage.setItem(KEY,"no");}catch(e){}bar.style.display="none";};
+  window.pkCookies=function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
 })();
 </script>
 </body>
