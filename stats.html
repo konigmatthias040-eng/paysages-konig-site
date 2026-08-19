@@ -108,12 +108,12 @@ h1 em{font-style:italic;color:var(--stone)}
 </div>
 
 <script>
-var NS="pk-fcfb84d7", API="https://api.counterapi.dev/v1/"+NS+"/";
+var API="https://abacus.jasoncameron.dev/get/paysageskonig-fr/";
 var MOIS_FR=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
 
 function lire(key){
-  return fetch(API+key+"/").then(function(r){return r.json();})
-    .then(function(j){return (j && typeof j.count==="number")?j.count:0;})
+  return fetch(API+key).then(function(r){return r.json();})
+    .then(function(j){return (j && typeof j.value==="number")?j.value:0;})
     .catch(function(){return 0;});
 }
 function moisKey(d){return "m"+d.getFullYear()+String(d.getMonth()+1).padStart(2,"0");}
@@ -122,7 +122,7 @@ function charger(){
   document.getElementById("total").textContent="…";
   document.getElementById("mois").textContent="…";
   var now=new Date();
-  lire("visits").then(function(n){document.getElementById("total").textContent=n.toLocaleString("fr-FR");});
+  lire("site").then(function(n){document.getElementById("total").textContent=n.toLocaleString("fr-FR");});
   lire(moisKey(now)).then(function(n){document.getElementById("mois").textContent=n.toLocaleString("fr-FR");});
   var mois=[];
   for(var i=5;i>=0;i--){mois.push(new Date(now.getFullYear(),now.getMonth()-i,1));}

@@ -1552,35 +1552,36 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
 })();
 </script>
 <script>(function(){var e=document.getElementById("statAnnees");if(!e)return;var n=String(new Date().getFullYear()-1929);e.setAttribute("data-count",n);if(e.textContent&&e.textContent!=="0")e.textContent=n;setTimeout(function(){if(e.textContent==="0")e.textContent=n;},2600);})();</script>
-<!-- Compteur de visites — counterapi.dev · sans cookie · sans compte · 1 visite/jour/navigateur -->
+<!-- Compteur de visites — Abacus · sans cookie · sans compte · 1 visite/jour/navigateur -->
 <script>
 (function(){
-  var NS="pk-fcfb84d7", API="https://api.counterapi.dev/v1/"+NS+"/";
+  var A="https://abacus.jasoncameron.dev/hit/paysageskonig-fr/";
   try{
     var d=new Date(), day=d.toISOString().slice(0,10);
     var mois="m"+day.slice(0,4)+day.slice(5,7);
     if(localStorage.getItem("pk_visit")!==day){
       localStorage.setItem("pk_visit",day);
-      fetch(API+"visits/up").catch(function(){});
-      fetch(API+mois+"/up").catch(function(){});
+      fetch(A+"site").catch(function(){});
+      fetch(A+mois).catch(function(){});
     }
   }catch(e){}
 })();
 </script>
 <script>
 (function(){
-  var NS="pk-fcfb84d7", API="https://api.counterapi.dev/v1/"+NS+"/";
+  var HIT="https://abacus.jasoncameron.dev/hit/paysageskonig-fr/jaime";
+  var GET="https://abacus.jasoncameron.dev/get/paysageskonig-fr/jaime";
   var btn=document.getElementById("likeBtn"), cnt=document.getElementById("likeCount");
   if(!btn) return;
-  function num(d){ return d&&(d.count!=null?d.count:(d.value!=null?d.value:null)); }
-  function show(n){ if(cnt&&n!=null) cnt.textContent=n; }
+  function show(n){ if(cnt&&typeof n==="number") cnt.textContent=n; }
+  fetch(GET).then(function(r){return r.json();}).then(function(d){show(d.value);}).catch(function(){});
   if(localStorage.getItem("pk_like")==="1") btn.classList.add("liked");
   btn.addEventListener("click",function(){
     if(localStorage.getItem("pk_like")==="1") return;
     localStorage.setItem("pk_like","1");
     btn.classList.add("liked","pop");
     setTimeout(function(){btn.classList.remove("pop");},430);
-    fetch(API+"jaime/up").then(function(r){return r.json();}).then(function(d){show(num(d));}).catch(function(){});
+    fetch(HIT).then(function(r){return r.json();}).then(function(d){show(d.value);}).catch(function(){});
   });
 })();
 </script>
