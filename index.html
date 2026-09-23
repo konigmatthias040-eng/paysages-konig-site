@@ -16,7 +16,9 @@
 <meta property="og:title" content="SARL Paysages König — Paysagiste à Barbonville (54)">
 <meta property="og:description" content="Création et aménagement d'extérieurs en Meurthe-et-Moselle : terrasses, allées, maçonnerie paysagère, engazonnement, clôtures. Devis gratuit après visite.">
 <meta property="og:url" content="https://paysageskonig.fr/">
-<meta property="og:image" content="https://paysageskonig.fr/images/logo-badge.png">
+<meta property="og:image" content="https://paysageskonig.fr/images/allee-facade-1.jpg">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="1125">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,7 +34,7 @@
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "13:00", "closes": "18:00" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "07:30", "closes": "12:00" }
   ],
-  "image": "https://paysageskonig.fr/images/logo-badge.png",
+  "image": "https://paysageskonig.fr/images/allee-facade-1.jpg",
   "logo": "https://paysageskonig.fr/images/logo-badge.png",
   "knowsAbout": [
     "Paysagiste",
@@ -260,6 +262,10 @@ header.solid .burger span{background:#fff}
   .cat:nth-child(5){animation-duration:9.3s;animation-delay:-6.4s}
   .cat:nth-child(6){animation-duration:8.2s;animation-delay:-3.4s}
   .cat:nth-child(7){animation-duration:10s;animation-delay:-4.7s}
+  .cat:nth-child(8){animation-duration:9.6s;animation-delay:-2.2s}
+  .cat:nth-child(9){animation-duration:8.6s;animation-delay:-5.8s}
+  .cat:nth-child(10){animation-duration:10.8s;animation-delay:-0.9s}
+  .cat:nth-child(11){animation-duration:9.1s;animation-delay:-3.9s}
 }
 .cat-in{position:relative;z-index:1;text-align:center;color:#fff;padding:0 22px}
 .cat-in b{font-family:var(--serif);font-weight:500;font-size:clamp(1.2rem,1.9vw,1.5rem);display:block;line-height:1.06;text-shadow:0 2px 12px rgba(0,0,0,.55)}
@@ -277,12 +283,16 @@ header.solid .burger span{background:#fff}
 .cat:nth-child(5){width:clamp(185px,22vw,240px);margin-top:60px}
 .cat:nth-child(6){width:clamp(165px,19vw,205px);margin-top:4px}
 .cat:nth-child(7){width:clamp(180px,21vw,230px);margin-top:42px}
+.cat:nth-child(8){width:clamp(170px,20vw,215px);margin-top:8px}
+.cat:nth-child(9){width:clamp(190px,23vw,250px);margin-top:66px}
+.cat:nth-child(10){width:clamp(160px,18vw,200px);margin-top:20px}
+.cat:nth-child(11){width:clamp(185px,22vw,240px);margin-top:48px}
 @media(max-width:700px){
-  /* mobile : vraie grille 2 colonnes (garantie), 7e bulle centrée dessous */
+  /* mobile : vraie grille 2 colonnes (garantie), dernière bulle centrée dessous si nombre impair */
   .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,3vw,18px);width:auto;max-width:440px;margin:0 auto;padding:0 10px}
   .cat{width:auto!important;margin:0!important}
   .cat:nth-child(even){margin-top:30px!important}
-  .cat:nth-child(7){grid-column:1 / -1;justify-self:center;width:calc(50% - 6px)!important;margin-top:0!important}
+  .cat:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - 6px)!important;margin-top:0!important}
 }
 
 /* ----- réalisations (portfolio) ----- */
@@ -691,6 +701,10 @@ footer a:hover{color:#fff}
 .cat-grid .cat:nth-child(5){ margin-top: 30px; animation-name: catFloatA; animation-duration: 7.1s; animation-delay: -2.5s; }
 .cat-grid .cat:nth-child(6){ margin-top: 64px; animation-name: catFloatB; animation-duration: 6.6s; animation-delay: -4.1s; }
 .cat-grid .cat:nth-child(7){ margin-top: 8px;  animation-name: catFloatA; animation-duration: 7.9s; animation-delay: -1.3s; }
+.cat-grid .cat:nth-child(8){ margin-top: 70px; animation-name: catFloatB; animation-duration: 7.4s; animation-delay: -2.2s; }
+.cat-grid .cat:nth-child(9){ margin-top: 14px; animation-name: catFloatA; animation-duration: 6.7s; animation-delay: -3.9s; }
+.cat-grid .cat:nth-child(10){ margin-top: 52px; animation-name: catFloatB; animation-duration: 8.1s; animation-delay: -1.1s; }
+.cat-grid .cat:nth-child(11){ margin-top: 24px; animation-name: catFloatA; animation-duration: 7.3s; animation-delay: -4.6s; }
 
 /* Overlay assombrissant : transition pour l'eclaircissement */
 .cat::after{ transition: opacity .6s ease; }
@@ -1080,7 +1094,7 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
 <section class="banner">
   <div class="wsep top"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="var(--paper)" d="M0,0 L1440,0 L1440,40 C1200,8 960,72 720,46 C480,20 240,72 0,38 Z"/></svg></div>
   <div class="bg slideshow" data-parallax="0.18">
-    <img src="images/band.jpg" alt="Terrasse en bois réalisée par Paysages König">
+    <img src="images/band.jpg" alt="Terrasse en bois réalisée par Paysages König" loading="lazy">
     <img src="images/terrasse-rosace-1.jpg" alt="Terrasse en pierre naturelle" loading="lazy">
     <img src="images/escalier-rocaille-1.jpg" alt="Escalier de jardin et rocaille" loading="lazy">
   </div>
@@ -1097,7 +1111,7 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
     </div>
     <div class="histoire-txt rv d1">
       <p>Tout commence en <strong>1929</strong>, à Barbonville, avec les <strong>Pépinières Koenig</strong>&nbsp;: arbres fruitiers, plants et végétaux cultivés au lieu-dit Le&nbsp;Nil. Depuis, le savoir-faire se transmet <strong>de père en fils</strong>.</p>
-      <p>Au fil des générations, l'activité de <strong>parcs et jardins</strong> se développe aux côtés de la pépinière. L'aménagement d'extérieurs devient peu à peu un métier à part entière&nbsp;: la <strong>SARL Paysages König</strong> voit le jour en <strong>1985</strong> (raison sociale&nbsp;: KONIG Entreprise Parcs &amp; Jardins).</p>
+      <p>Au fil des générations, l'activité de <strong>parcs et jardins</strong> se développe aux côtés de la pépinière. L'aménagement d'extérieurs devient peu à peu un métier à part entière&nbsp;: la <strong>SARL Paysages König</strong> voit le jour en <strong>1985</strong> (raison sociale&nbsp;: KONIG Entreprise Parcs Jardins).</p>
       <p>Près d'un siècle plus tard, l'entreprise <strong>reste familiale</strong> et <strong>fidèle à Barbonville</strong>, avec le même engagement qu'au premier jour.</p>
     </div>
     <div class="frise rv d2">
@@ -1191,7 +1205,7 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
       <button class="fchip" data-filter="maconnerie">Maçonnerie &amp; béton</button>
       <button class="fchip" data-filter="all">Tout voir</button>
     </div>
-    <div class="subfilters" id="subfilters-clotures" hidden aria-label="Filtrer les clôtures par style">
+    <div class="subfilters" id="subfilters-clotures" role="group" hidden aria-label="Filtrer les clôtures par style">
       <button class="sfchip active" data-sub="all">Toutes</button>
       <button class="sfchip" data-sub="rigide">Rigide</button>
       <button class="sfchip" data-sub="soubassement">Rigide + soubassement</button>
@@ -1215,10 +1229,10 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
       <button class="gcell rv" data-cat="garage" data-full="images/entree-garage-2.jpg"><img src="images/entree-garage-2.jpg" alt="" loading="lazy"><span class="gov"><i>Entrées de garage</i></span></button>
       <button class="gcell rv" data-cat="allees" data-full="images/allee-pietonne-1.jpg"><img src="images/allee-pietonne-1.jpg" alt="" loading="lazy"><span class="gov"><i>Allées</i></span></button>
       <button class="gcell rv" data-cat="garage" data-full="images/entree-garage-1.jpg"><img src="images/entree-garage-1.jpg" alt="" loading="lazy"><span class="gov"><i>Entrées de garage</i></span></button>
-      <button class="gcell rv" data-cat="allees" data-full="images/allee-c1.jpg"><img src="images/allee-c1.jpg" alt="" loading="lazy"><span class="gov"><i>Allées</i></span></button>
+      <button class="gcell rv" data-cat="garage" data-full="images/allee-c1.jpg"><img src="images/allee-c1.jpg" alt="" loading="lazy"><span class="gov"><i>Entrées de garage</i></span></button>
       <button class="gcell rv" data-cat="allees" data-full="images/allee-c2.jpg"><img src="images/allee-c2.jpg" alt="" loading="lazy"><span class="gov"><i>Allées</i></span></button>
       <button class="gcell rv" data-cat="allees" data-full="images/allee-c3.jpg"><img src="images/allee-c3.jpg" alt="" loading="lazy"><span class="gov"><i>Allées</i></span></button>
-      <button class="gcell rv" data-cat="allees" data-full="images/allee-c4.jpg"><img src="images/allee-c4.jpg" alt="" loading="lazy"><span class="gov"><i>Allées</i></span></button>
+      <button class="gcell rv" data-cat="garage" data-full="images/allee-c4.jpg"><img src="images/allee-c4.jpg" alt="" loading="lazy"><span class="gov"><i>Entrées de garage</i></span></button>
       <button class="gcell rv" data-cat="escaliers" data-feat="1" data-full="images/escalier-1.jpg"><img src="images/escalier-1.jpg" alt="" loading="lazy"><span class="gov"><i>Escaliers</i></span></button>
       <button class="gcell rv" data-cat="escaliers" data-full="images/escalier-2.jpg"><img src="images/escalier-2.jpg" alt="" loading="lazy"><span class="gov"><i>Escaliers</i></span></button>
       <button class="gcell rv" data-cat="escaliers" data-full="images/escalier-3.jpg"><img src="images/escalier-3.jpg" alt="" loading="lazy"><span class="gov"><i>Escaliers</i></span></button>
@@ -1245,13 +1259,13 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
       <button class="gcell rv" data-cat="maconnerie" data-full="images/maconnerie-c1.jpg"><img src="images/maconnerie-c1.jpg" alt="" loading="lazy"><span class="gov"><i>Maçonnerie &amp; béton</i></span></button>
       <button class="gcell rv" data-cat="maconnerie" data-full="images/maconnerie-c2.jpg"><img src="images/maconnerie-c2.jpg" alt="" loading="lazy"><span class="gov"><i>Maçonnerie &amp; béton</i></span></button>
       <button class="gcell rv" data-cat="maconnerie" data-full="images/maconnerie-c3.jpg"><img src="images/maconnerie-c3.jpg" alt="" loading="lazy"><span class="gov"><i>Maçonnerie &amp; béton</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="composite" data-occ="occ" data-full="images/cloture-composite.jpg"><img src="images/cloture-composite.jpg" alt="" loading="lazy"><span class="gov"><i>Composite</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-feat="1" data-full="images/cloture-rigide-2.jpg"><img src="images/cloture-rigide-2.jpg" alt="" loading="lazy"><span class="gov"><i>Rigide</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-full="images/cloture-rigide.jpg"><img src="images/cloture-rigide.jpg" alt="" loading="lazy"><span class="gov"><i>Rigide</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="composite" data-occ="occ" data-full="images/cloture-c4.jpg"><img src="images/cloture-c4.jpg" alt="" loading="lazy"><span class="gov"><i>Composite</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="deco" data-occ="semi" data-full="images/cloture-c1.jpg"><img src="images/cloture-c1.jpg" alt="" loading="lazy"><span class="gov"><i>Panneau déco</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-full="images/cloture-c2.jpg"><img src="images/cloture-c2.jpg" alt="" loading="lazy"><span class="gov"><i>Rigide</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="occultante" data-occ="occ" data-full="images/cloture-c3.jpg"><img src="images/cloture-c3.jpg" alt="" loading="lazy"><span class="gov"><i>Brise-vue</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="composite" data-occ="occ" data-full="images/cloture-composite.jpg"><img src="images/cloture-composite.jpg" alt="" loading="lazy"><span class="gov"><i>Clôture composite</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-feat="1" data-full="images/cloture-rigide-2.jpg"><img src="images/cloture-rigide-2.jpg" alt="" loading="lazy"><span class="gov"><i>Clôture rigide</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-full="images/cloture-rigide.jpg"><img src="images/cloture-rigide.jpg" alt="" loading="lazy"><span class="gov"><i>Clôture rigide</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="composite" data-occ="occ" data-full="images/cloture-c4.jpg"><img src="images/cloture-c4.jpg" alt="" loading="lazy"><span class="gov"><i>Clôture composite</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="deco" data-occ="semi" data-full="images/cloture-c1.jpg"><img src="images/cloture-c1.jpg" alt="" loading="lazy"><span class="gov"><i>Clôture panneau déco</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="rigide" data-occ="ajr" data-full="images/cloture-c2.jpg"><img src="images/cloture-c2.jpg" alt="" loading="lazy"><span class="gov"><i>Clôture rigide</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="occultante" data-occ="occ" data-full="images/cloture-c3.jpg"><img src="images/cloture-c3.jpg" alt="" loading="lazy"><span class="gov"><i>Clôture brise-vue</i></span></button>
       <!-- nouvelles réalisations (archive chantiers) -->
       <button class="gcell rv" data-cat="escaliers" data-feat="1" data-full="images/escalier-rocaille-1.jpg"><img src="images/escalier-rocaille-1.jpg" alt="Escalier de jardin et rocaille" loading="lazy"><span class="gov"><i>Escaliers</i></span></button>
       <button class="gcell rv" data-cat="allees" data-feat="1" data-full="images/allee-damier-1.jpg"><img src="images/allee-damier-1.jpg" alt="Cour d'entrée contemporaine en dallage damier clair et anthracite" loading="lazy"><span class="gov"><i>Allées</i></span></button>
@@ -1272,16 +1286,16 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
       <button class="gcell rv" data-cat="mineral" data-full="images/mineral-contemporain-1.jpg"><img src="images/mineral-contemporain-1.jpg" alt="Décor minéral contemporain" loading="lazy"><span class="gov"><i>Décoration minérale</i></span></button>
       <button class="gcell rv" data-cat="mineral" data-full="images/mineral-cour-1.jpg"><img src="images/mineral-cour-1.jpg" alt="Cour pavée bordant un massif minéral" loading="lazy"><span class="gov"><i>Décoration minérale</i></span></button>
       <button class="gcell rv" data-cat="allees" data-full="images/allee-portail-1.jpg"><img src="images/allee-portail-1.jpg" alt="Cour d'accès pavée avec portail acier" loading="lazy"><span class="gov"><i>Allées</i></span></button>
-      <button class="gcell rv" data-cat="allees" data-full="images/allee-opus-1.jpg"><img src="images/allee-opus-1.jpg" alt="Grande cour pavée" loading="lazy"><span class="gov"><i>Allées</i></span></button>
+      <button class="gcell rv" data-cat="garage" data-full="images/allee-opus-1.jpg"><img src="images/allee-opus-1.jpg" alt="Grande cour pavée" loading="lazy"><span class="gov"><i>Entrées de garage</i></span></button>
       <button class="gcell rv" data-cat="allees" data-full="images/allee-granit-1.jpg"><img src="images/allee-granit-1.jpg" alt="Allée d'accès pavée et massifs" loading="lazy"><span class="gov"><i>Allées</i></span></button>
       <button class="gcell rv" data-cat="mineral" data-full="images/jardin-entree-1.jpg"><img src="images/jardin-entree-1.jpg" alt="Jardin d'entrée décoratif, massif minéral et pavés" loading="lazy"><span class="gov"><i>Décoration minérale</i></span></button>
       <button class="gcell rv" data-cat="terrasses" data-feat="1" data-full="images/terrasse-boislook-2025.jpg"><img src="images/terrasse-boislook-2025.jpg" alt="Terrasse en dallage aspect bois" loading="lazy"><span class="gov"><i>Terrasses</i></span></button>
       <button class="gcell rv" data-cat="garage" data-feat="1" data-full="images/garage-motifs.jpg"><img src="images/garage-motifs.jpg" alt="Entrée de garage pavée à motifs" loading="lazy"><span class="gov"><i>Entrées de garage</i></span></button>
       <button class="gcell rv" data-cat="escaliers" data-feat="1" data-full="images/escalier-2025.jpg"><img src="images/escalier-2025.jpg" alt="Escalier extérieur en pierre" loading="lazy"><span class="gov"><i>Escaliers</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="composite" data-feat="1" data-full="images/cloture-composite-2.jpg"><img src="images/cloture-composite-2.jpg" alt="Clôture composite" loading="lazy"><span class="gov"><i>Composite</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="soubassement" data-full="images/cloture-rigide-soubassement.jpg"><img src="images/cloture-rigide-soubassement.jpg" alt="Clôture rigide sur soubassement" loading="lazy"><span class="gov"><i>Rigide + soubassement</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="occultante" data-full="images/cloture-brisevue-1.jpg"><img src="images/cloture-brisevue-1.jpg" alt="Clôture rigide avec brise-vue" loading="lazy"><span class="gov"><i>Brise-vue</i></span></button>
-      <button class="gcell rv" data-cat="clotures" data-style="bois" data-full="images/cloture-bois-1.jpg"><img src="images/cloture-bois-1.jpg" alt="Clôture en bois" loading="lazy"><span class="gov"><i>Bois</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="composite" data-feat="1" data-full="images/cloture-composite-2.jpg"><img src="images/cloture-composite-2.jpg" alt="Clôture composite" loading="lazy"><span class="gov"><i>Clôture composite</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="soubassement" data-full="images/cloture-rigide-soubassement.jpg"><img src="images/cloture-rigide-soubassement.jpg" alt="Clôture rigide sur soubassement" loading="lazy"><span class="gov"><i>Clôture rigide + soubassement</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="occultante" data-full="images/cloture-brisevue-1.jpg"><img src="images/cloture-brisevue-1.jpg" alt="Clôture rigide avec brise-vue" loading="lazy"><span class="gov"><i>Clôture brise-vue</i></span></button>
+      <button class="gcell rv" data-cat="clotures" data-style="bois" data-full="images/cloture-bois-1.jpg"><img src="images/cloture-bois-1.jpg" alt="Clôture en bois" loading="lazy"><span class="gov"><i>Clôture bois</i></span></button>
       <button class="gcell rv" data-cat="mineral" data-feat="1" data-full="images/deco-minerale-2022.jpg"><img src="images/deco-minerale-2022.jpg" alt="Massif de décoration minérale" loading="lazy"><span class="gov"><i>Décoration minérale</i></span></button>
       <button class="gcell rv" data-cat="jardins" data-feat="1" data-full="images/engazonnement-2025.jpg"><img src="images/engazonnement-2025.jpg" alt="Engazonnement d'un jardin" loading="lazy"><span class="gov"><i>Engazonnement</i></span></button>
       <button class="gcell rv" data-cat="plantations" data-feat="1" data-full="images/plantation-1.jpg"><img src="images/plantation-1.jpg" alt="Plantation de massifs et de haies" loading="lazy"><span class="gov"><i>Plantations &amp; haies</i></span></button>
@@ -1394,7 +1408,7 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
         <h2 style="margin-top:18px">Parlons de votre <em>projet</em></h2>
         <p class="cta-lead">Une idée, un projet, un coin d'extérieur à transformer&nbsp;? Parlons-en ensemble, chez vous — nous étudions votre terrain et imaginons l'extérieur que vous attendez. Le premier pas, c'est un simple appel.</p>
         <div class="devis-hl"><b>Devis gratuit</b><span>· sans engagement</span></div>
-        <p class="note">Paysages König est un site de présentation. Pour toute demande de devis ou prise de rendez-vous, appelez directement le bureau — le gérant se déplace sur site pour étudier votre projet, puis le devis est établi au bureau et vous est transmis.</p>
+        <p class="note">paysageskonig.fr est un site de présentation. Pour toute demande de devis ou prise de rendez-vous, appelez directement le bureau — le gérant se déplace sur site pour étudier votre projet, puis le devis est établi au bureau et vous est transmis.</p>
         <a class="cnum" href="tel:+33383757071">03&nbsp;83&nbsp;75&nbsp;70&nbsp;71</a>
         <div class="acts">
           <a class="btn btn-light" href="tel:+33383757071">Appeler le bureau</a>
@@ -1540,7 +1554,7 @@ footer .footlike{display:flex;align-items:center;justify-content:center;gap:14px
     all:"Tout notre travail réuni — parcourez l'ensemble de nos réalisations.",
     terrasses:"Une terrasse, c'est une pièce de vie en plus — imaginons la vôtre.",
     allees:"Une belle entrée donne le ton dès le portail — pavés, dalles, sur mesure.",
-    garage:"Fini la boue sous les roues — une entrée de garage pavée ou dallée, propre en toute saison.",
+    garage:"Fini la boue sous les roues — une entrée de garage pavée ou dallée, praticable par tous les temps.",
     escaliers:"Le dénivelé devient élégant — escaliers extérieurs, marches et paliers.",
     jardins:"Du vert sous vos pieds — engazonnement, préparation du sol et semis.",
     plantations:"Une intimité tout en verdure — massifs, haies libres ou taillées, végétaux variés, plantés pour durer.",
